@@ -1,0 +1,17 @@
+{
+    "friendList": {
+      "dxu": {
+        "contacts": {
+          "schen": true
+        }
+      },
+      "schen": {
+        "contacts": {
+          "dxu": true
+        }
+      },
+      "axu": {
+        "contacts": { }
+      }
+    }
+}
