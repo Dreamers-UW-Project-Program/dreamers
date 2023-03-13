@@ -1,6 +1,5 @@
-import { ref, uploadString } from "firebase/storage";
-import { storage } from "./firebase";
-import { toDataURL } from "./utils";
+import { ref, uploadString, listAll } from "firebase/storage";
+import { storage } from "../firebase";
 
 export const toDataURL = async (url) => {
 	let blob = await fetch(url).then(r => r.blob());
@@ -26,4 +25,14 @@ export const uploadProfileImageFromFile = async (file, imageName) => {
 	uploadBytes(profileImageRef, file).then((snapshot)=> {
 		console.log('Uploaded a blob or file!');
 	})
+}
+
+export const getAllFilesFromFolderUrl = async (folderUrl) => {
+	const folderRef = ref(storage, folderUrl);
+	// Find all the prefixes, items and return them
+	listAll(listRef).then((res) => {
+			return res;
+		}).catch((error) => {
+			console.log(error.code);
+		});
 }
