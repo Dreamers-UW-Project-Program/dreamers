@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.glassmorphism {
-    background: rgba( 255, 255, 255, 0.1 );
 
-    backdrop-filter: blur( 8px );
-    -webkit-backdrop-filter: blur( 8px );
-    border-radius: 10px;
+.fixed-center {
+    transform: translate(-50%, -50%);
 }
+
+.bg-image {
+    background-image: url('../public/images/background-v2.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
 
 /* width */
 ::-webkit-scrollbar {

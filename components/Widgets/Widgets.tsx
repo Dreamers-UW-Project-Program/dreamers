@@ -1,13 +1,17 @@
 import Widget from "./Widget";
+import Bot from "../Bot/Bot";
 import FriendsList from "./FriendsList";
 
 
 const Widgets = () => {
     return (
-        <div className="flex flex-col justify-center center-items h-screen absolute right-0 z-30 mr-5">
-            <Widget />
-            <Widget inner={FriendsList({})}/>
-            <Widget />
+        <div className="fixed top-[55%] left-[15%] fixed-center z-[999]">
+            <div className="flex flex-col justify-center items-center h-screen">
+                <Widget />
+                <Widget inner={FriendsList({})}/>
+                <Widget />
+                <Bot />
+            </div>
         </div>
     )
 }
