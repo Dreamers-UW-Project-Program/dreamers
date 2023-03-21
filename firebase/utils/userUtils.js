@@ -44,3 +44,14 @@ export async function getUserByID(id) {
     return null;
 
 }
+
+export const getFriendsListByID = async (id) => {
+    const refToCheck = ref(db, `friendList/${id}`);
+    const snapshot = await get(refToCheck);
+
+    if (snapshot.exists()) {
+        const ret = await snapshot.val();
+        return ret;
+    }
+    return null;
+}

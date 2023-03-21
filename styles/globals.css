@@ -2,11 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .glassmorphism {
     background: rgba( 255, 255, 255, 0.1 );
 
     backdrop-filter: blur( 8px );
     -webkit-backdrop-filter: blur( 8px );
     border-radius: 10px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.8vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display:none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #EAA436;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d48b17; 
 }
