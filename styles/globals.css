@@ -13,3 +13,23 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
   }
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.8vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  display:none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #EAA436;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d48b17; 
+}
