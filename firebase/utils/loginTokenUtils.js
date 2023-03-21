@@ -1,10 +1,14 @@
 require('dotenv').config()
 
+import { encodeEmail, getUserID } from "./userUtils.js"
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const getToken = (request) => {
-    const authorization = request.get('authorization');
+// All tokens use RAW email, in ascii
+
+export const getToken = (request) => {
+    const authorization = request.headers['authorization'];
     if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
         return authorization.substring(7);
     }
@@ -24,3 +28,9 @@ const checkToken = (token, email) => {
     }
 }
 
+export async function getUserIDByToken(token) {
+    const unhashedEmail = jwt.verify(token, process.env.TOKEN_HASH);
+    const encoded = encodeEmail(unhashedEmail);
+    const UserID = await getUserID(encoded);
+    return UserID;
+}

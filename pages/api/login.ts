@@ -20,7 +20,6 @@ export default async function handler(
         return
     }
 
-
     try {
         const { email, password } = req.body;
         const encoded = encodeEmail(email);
@@ -34,7 +33,8 @@ export default async function handler(
         if (!validLogin) {
             return res.status(401).json({ message: 'Invalid login credentials' })
         }
-
+        
+        // uses RAW email, in ascii
         const token = jwt.sign(email, process.env.TOKEN_HASH);
 
         res.status(200).send({ token, email });

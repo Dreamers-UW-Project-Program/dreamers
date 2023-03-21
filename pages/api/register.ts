@@ -51,7 +51,7 @@ export default async function registerHandler(
         const key = await userListHandler(encoded, passHash, username);
         await userIdListHandler(encoded, key || "INVALID");
 
-        res.status(200).json({ email: encoded, passHash, username });
+        res.status(201).json({ email: encoded, passHash, username });
     } catch {
         res.status(400).send({ message: 'Invalid body parameters'});
     }    
