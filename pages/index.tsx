@@ -12,13 +12,12 @@ const Home: NextPage = () => {
         <title>Androids, Dreams, Electric Sheeps</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-[#141414] min-h-screen flex max-w-[2500px] mx-auto m-0 overflow-x-hidden scroll-smooth p-0">
-        <div className="flex overflow-auto justify-end w-[50%] items-center">
-          <DreamFeed />
+      <main className="bg-[#141414] min-h-screen flex flex-row max-w-[2500px] mx-auto m-0 overflow-x-hidden scroll-smooth p-0 bg-image">
+        <div className="flex w-[30%] relative items-center justify-center">
+            <Widgets />
         </div>
-        <div className="w-[50%] fixed right-0">
-          <Bot />
-          <Widgets />
+        <div className="flex w-[70%] justify-center items-center overflow-auto">
+          <DreamFeed />
         </div>
       </main>
     </div>
