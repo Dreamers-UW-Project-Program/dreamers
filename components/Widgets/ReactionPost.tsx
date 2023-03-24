@@ -50,7 +50,7 @@ function ReactionPost() {
           <Reaction response="Comment"></Reaction>
         </div>
         <div className="">
-          <Reaction response="Comment"></Reaction>x
+          <Reaction response="Comment"></Reaction>
         </div>
       </div>
     </div>
