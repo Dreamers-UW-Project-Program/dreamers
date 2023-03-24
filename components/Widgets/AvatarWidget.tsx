@@ -13,7 +13,7 @@ function AvatarWidget() {
     return greeting;
   }
   return (
-    <div className="w-[18vw] h-[10vw] bg-[#b7b9bc] rounded-[2rem] my-[1vw] border-2 glassmorphism border-gradient-to-r from-teal-500 to-fuchsia-400">
+    <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white">
       <div className="flex flex-row items-center justify-evenly mx-[0.5vw] my-[1vw] h-[8vw]">
         <Image
           src="/images/profilePicture.jpg"

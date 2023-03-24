@@ -1,15 +1,21 @@
 import Widget from "./Widget";
+
+import Bot from "../Bot/Bot";
+import FriendsList from "./FriendsList";
 import AvatarWidget from "./AvatarWidget";
 import ReactionPost from "./ReactionPost";
 
-function Widgets() {
+const Widgets = () => {
   return (
-    <div className="flex flex-col justify-center items-end h-screen absolute right-0 z-30 mr-5">
-      <AvatarWidget />
-      <Widget />
-      <ReactionPost />
+    <div className="fixed top-[55%] left-[15%] fixed-center z-[999]">
+      <div className="flex flex-col justify-center items-center h-screen">
+        <AvatarWidget />
+        <Widget inner={FriendsList({})} />
+        <ReactionPost />
+        <Bot />
+      </div>
     </div>
   );
-}
+};
 
 export default Widgets;

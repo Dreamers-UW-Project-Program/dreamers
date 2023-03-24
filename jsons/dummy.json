@@ -1,17 +1,57 @@
 {
-    "friendList": {
-      "dxu": {
-        "contacts": {
-          "schen": true
-        }
-      },
-      "schen": {
-        "contacts": {
-          "dxu": true
-        }
-      },
-      "axu": {
-        "contacts": { }
-      }
+  "userList": {
+    "steven_user_id": {
+      "username": "steven chen",
+      "email": "stevenchen@gmail.com",
+      "passHash": "Pass2"
+    },
+    "fans_user_id": {
+      "username": "fan yang",
+      "email": "fanyang@gmail.com",
+      "passHash": "Pass2"
+    },
+    "daniel_user_id": {
+      "username": "daniel xu",
+      "email": "danielxu@gmail.com",
+      "passHash": "Pass3"
+    },
+    "kevin_user_id": {
+      "username": "kevin pig",
+      "email": "kevinpig@gmail.com",
+      "passHash": "Pass4"
     }
+  },
+  "userIDList": {
+  },
+  "friendList": {
+    "steven_user_id": {
+      "fans_user_id": true,
+      "daniel_user_id": true,
+      "kevin_user_id": true
+    },
+    "fans_user_id": {
+      "steven_user_id": true
+    },
+    "kevin_user_id": {
+      "steven_user_id": true
+    },
+    "daniel_user_id": {
+      "steven_user_id": true
+    }
+  },
+  "postList": {
+    "post1": {
+      "id": "post1_id",
+      "title": "MESSI",
+      "author": "steven_user_id",
+      "date": "Mar 20, 2023",
+      "body": "Lionel Messi, a young boy from Rosario, Argentina, had a passion for soccer. Despite his small stature, he was scouted by FC Barcelona at just 13 years old. He quickly made a name for himself on the first team, leading them to numerous victories and championships. Messi faced challenges and criticism but remained dedicated to his craft. In the end, his hard work paid off, cementing his place in soccer history as one of the greatest players of all time.",
+      "thumbnail": "https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"
+    }
+  },
+  "usersPostList": {
+    "steven_user_id": {
+      "post1_id": true
+    }
+  }
 }

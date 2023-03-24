@@ -4,8 +4,10 @@ import Image from 'next/image';
 
 const Bot = () => {
     return (
-        <div className="fixed bottom-0 z-0">
-            <Image src="/images/bot_vertical.png" alt="" width={450} height={800}/>
+        <div className="flex h-[25%]">
+            <div className="fixed bottom-0 left-[15%] z-1">
+                <Image src="/images/bot.png" alt="" width={600} height={200}/>
+            </div>
         </div>
     )
 }
