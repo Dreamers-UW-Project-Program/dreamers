@@ -38,7 +38,8 @@ export default async function handler(
         const token = jwt.sign(email, process.env.TOKEN_HASH);
 
         res.status(200).send({ token, email });
-    } catch {
+    } catch (err) {
+        console.log(err);
         res.status(400).send({ message: 'Invalid body parameters'});
     }
 

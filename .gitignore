@@ -18,6 +18,8 @@
 # misc
 .DS_Store
 *.pem
+/firebase/hardcode.js
+/pages/api/hardcode.ts
 
 # debug
 npm-debug.log*

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { database as db } from "../../firebase/firebase.js"
-import { ref, push, set } from "firebase/database"
+import { ref, push, set, get } from "firebase/database"
 import { getToken, getUserIDByToken } from "../../firebase/utils/loginTokenUtils.js"
 
 type Data = {
@@ -8,7 +8,7 @@ type Data = {
     title?: string,
     body?: string,
     thumbnail?: string,
-    date?: string,
+    date?: Date,
     message?: string
 }
 
@@ -31,21 +31,36 @@ export default async function postHandler(
 
     if (req.method === "GET") {
 
+        try {
+            const postListRef = ref(db, '/postList');
+            const snapshot = await get(postListRef);
+
+            if (snapshot.exists()) {
+                res.status(200).json(snapshot.val());
+            }
+            res.status(404).json({ message: "No Post Found"});
+        } catch {
+            res.status(404).json({ message: "No Post Found"});
+        }
+
     } else if (req.method === "POST") {
 
         try {
 
             const token = getToken(req);
-            console.log(req.headers['authorization']);
+            // console.log(req.headers['authorization']);
 
             if (!token) {
-                return res.status(401).json({ message: "token missing or invalid"});
+                return res.status(401).json({ message: "token missing or invalid" });
             }
 
-            const { title, body, thumbnail, date } = req.body;
+            const { title, body, thumbnail } = req.body;
+
+            const date = new Date();
+
             const userID = await getUserIDByToken(token);
 
-            const postKey = await postListHandler(title, body, thumbnail, userID, date);
+            const postKey = await postListHandler(title, body, thumbnail, userID, date.toString());
             await usersPostListHandler(userID, postKey || "INVALID KEY");
 
             res.status(201).send({ authorID: userID, title, body, thumbnail, date });
