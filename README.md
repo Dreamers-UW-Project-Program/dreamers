@@ -1,27 +1,91 @@
-# Next.js + Tailwind CSS Example
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## API Reference
 
-## Deploy your own
+#### Register
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+```
+  POST /api/register
 ```
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+| Body Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `email` | `string` |  Email to register with |
+| `password` | `string` |  Password to register with|
+| `username` | `string` |  Your preferred username |
+
+#### Login to get authorization token
+
+```
+  POST /api/login
 ```
 
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+| Body Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `email` | `string` |  The user's email you are trying to login |
+| `password` | `string` |  The user's password you are trying to login |
+
+#### Get all posts
+
+```
+  GET /api/posts
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+#### Make new post
+```
+  POST /api/posts
+```
+| Body Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `title` | `string` |  Title for the new post |
+| `body` | `string` |  Post body |
+| `thumbnail` | `string` |  Url of thumbnail |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
+
+#### Get specific post
+```
+  GET /api/posts/${postID}
+```
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `postID` | `string` |  Unique hashed ID for target post |
+
+#### Delete specific post
+```
+  DELETE /api/posts/${postID}
+```
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `postID` | `string` |  Unique hashed ID for target post |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
+
+#### Get friend list for user
+```
+  GET /api/posts/${id}
+```
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` |  Unique hashed ID for user1 |
+| `friendID` | `string` |  __Optional.__ Unique hashed ID for user2. If provided, returns if user2 is user1's friend. Otherwise, returns a list of user1's friends |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | User1's token obtained from Login. Uses bearer authentication
+
+#### Post/Delete friend for user
+```
+  POST/DELETE /api/posts/${id}
+```
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` |  Unique hashed ID for user1 |
+| `friendID` | `string` |  Unique hashed ID for user2. If method is POST, user1 befriends user2. If method is DELETE, user1 hates user2. |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | User1's token obtained from Login. Uses bearer authentication

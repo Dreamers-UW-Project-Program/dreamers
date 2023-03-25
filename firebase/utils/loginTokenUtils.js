@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 import { encodeEmail, getUserID } from "./userUtils.js"
 
 const bcrypt = require('bcrypt');
@@ -15,7 +13,7 @@ export const getToken = (request) => {
     return null;
 }
 
-const checkToken = (token, email) => {
+export const checkToken = (token, email) => {
     try {
         const unhashedEmail = jwt.verify(token, process.env.TOKEN_HASH);
         if (!token || !unhashedEmail || unhashedEmail !== email) {
@@ -29,8 +27,12 @@ const checkToken = (token, email) => {
 }
 
 export async function getUserIDByToken(token) {
-    const unhashedEmail = jwt.verify(token, process.env.TOKEN_HASH);
-    const encoded = encodeEmail(unhashedEmail);
-    const UserID = await getUserID(encoded);
-    return UserID;
+    try {
+        const unhashedEmail = jwt.verify(token, process.env.TOKEN_HASH);
+        const encoded = encodeEmail(unhashedEmail);
+        const UserID = await getUserID(encoded);
+        return UserID;
+    } catch {
+        return null;
+    }
 }

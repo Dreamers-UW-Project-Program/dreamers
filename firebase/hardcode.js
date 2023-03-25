@@ -3,34 +3,23 @@ import { database as db } from "./firebase.js"
 import { encodeEmail, getUserID, getUserByID } from "./utils/userUtils.js"
 import obj from "../jsons/dummy.json" assert {type: "json"};
 
-async function pushDummyData() {
+export async function pushDummyData() {
     await set(ref(db, '/'), obj);
-    console.log("resolved");
-    process.exit();
+    console.log("pushed dummy data");
 }
 
 // pushDummyData()
 
-// const dbRef = ref(db, 'userIDList/eWlkaWNoZW5AZ21haWwuY29t');
+// const email = "yidichen@gmail.com";
 
-// get(dbRef).then((snapshot) => {
-//     if (snapshot.exists()) {
-//         console.log('exists');
-//     } else {
-//         console.log('not exists');
-//     }
-// })
+// const encoded = encodeEmail(email);
 
-const email = "yidichen@gmail.com";
+// console.log(encoded);
 
-const encoded = encodeEmail(email);
+// const userID = await getUserID(encoded);
 
-console.log(encoded);
+// console.log(userID);
 
-const userID = await getUserID(encoded);
+// const user = await getUserByID(userID);
 
-console.log(userID);
-
-const user = await getUserByID(userID);
-
-console.log(user.email, user.passHash, user.username);
+// console.log(user.email, user.passHash, user.username);
