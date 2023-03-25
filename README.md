@@ -3,7 +3,7 @@
 
 #### Register
 
-```http
+```
   POST /api/register
 ```
 
@@ -15,7 +15,7 @@
 
 #### Login to get authorization token
 
-```http
+```
   POST /api/login
 ```
 
@@ -26,12 +26,12 @@
 
 #### Get all posts
 
-```http
+```
   GET /api/posts
 ```
 
 #### Make new post
-```http
+```
   POST /api/posts
 ```
 | Body Parameter | Type     | Description                |
@@ -45,7 +45,7 @@
 | `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
 
 #### Get specific post
-```http
+```
   GET /api/posts/${postID}
 ```
 | Query Parameter | Type     | Description                |
@@ -53,7 +53,7 @@
 | `postID` | `string` |  Unique hashed ID for target post |
 
 #### Delete specific post
-```http
+```
   DELETE /api/posts/${postID}
 ```
 | Query Parameter | Type     | Description                |
@@ -65,7 +65,7 @@
 | `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
 
 #### Get friend list for user
-```http
+```
   GET /api/posts/${id}
 ```
 | Query Parameter | Type     | Description                |
@@ -78,7 +78,7 @@
 | `authorization` | `string` | User1's token obtained from Login. Uses bearer authentication
 
 #### Post/Delete friend for user
-```http
+```
   POST/DELETE /api/posts/${id}
 ```
 | Query Parameter | Type     | Description                |
