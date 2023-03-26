@@ -1,13 +1,6 @@
 import { useEffect, useState } from "react";
 import FeedPost from "./FeedPost";
-
-export interface Post {
-    authorID: string;
-    body: string;
-    date: string;
-    thumbnail: string;
-    title: string;
-}
+import { Post } from "@customTypes/globals";
 
 const DreamFeed = () => {
     const [posts, setPosts] = useState<{[id: string]: Post}>({});

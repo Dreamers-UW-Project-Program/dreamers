@@ -1,4 +1,4 @@
-import { Post } from "./DreamFeed";
+import { Post } from "@customTypes/globals";
 
 const DreamContent = ( props: Post ) => {
     return (

@@ -1,7 +1,6 @@
 import DreamContent from "./DreamContent";
 import DreamResponse from "./DreamResponse";
-import { Post } from "./DreamFeed";
-type FeedPostProps = Post
+import { Post } from "@customTypes/globals";
 
 const FeedPost = ( props: Post) => {
     return (
