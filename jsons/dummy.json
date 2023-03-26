@@ -1,27 +1,49 @@
 {
-  "userList": {
-    "-NRLg0PgNitNzSWFTnj1": {
-      "username": "Steven Chen",
-      "email": "c3RldmVuY2hlbkBnbWFpbC5jb20=",
-      "passHash": "$2b$10$vDCzGc089Kcd2bFXI3BaW.pKY7hH5APxkFGkRGG./sWwS9zu0D3Hu"
-    },
+  "friendList": {
     "-NRLfcnuZzeUjyc_2FBH": {
-      "username": "Fan Yang",
-      "email": "ZmFueWFuZ0BnbWFpbC5jb20=",
-      "passHash": "$2b$10$nU5LG0jeshd1yCQ1VnqNvOACNfaZiFfOSZQZHEt8a.y0l7h9LEa9y"
+      "-NRLg0PgNitNzSWFTnj1": true
     },
-    "-NRLgSkCGchJxroOTM9l": {
-      "username": "Daniel Xu",
-      "email": "ZGFuaWVseHVAZ21haWwuY29t",
-      "passHash": "$2b$10$klJ/bN1BirMN2hkCIV5OW.Hn/59/a7LMG75A8UJjFqdfTLs4ZQWDi"
+    "-NRLg0PgNitNzSWFTnj1": {
+      "-NRLfcnuZzeUjyc_2FBH": true,
+      "-NRLgFq6ZUip--H4mrmE": true,
+      "-NRLgSkCGchJxroOTM9l": true
+    }
+  },
+  "postList": {
+    "-NRLhi1MpWg9cGLCOTgl": {
+      "authorID": "-NRLg0PgNitNzSWFTnj1",
+      "body": "Lionel Messi, a young boy from Rosario, Argentina, had a passion for soccer. Despite his small stature, he was scouted by FC Barcelona at just 13 years old. He quickly made a name for himself on the first team, leading them to numerous victories and championships. Messi faced challenges and criticism but remained dedicated to his craft. In the end, his hard work paid off, cementing his place in soccer history as one of the greatest players of all time.",
+      "comments": {
+        "-NRUtet0ElAbO6N8Ooyo": {
+          "comment": "my goat",
+          "userID": "-NRLgFq6ZUip--H4mrmE"
+        }
+      },
+      "date": "Mar 20, 2023",
+      "likes": {
+        "-NRLgFq6ZUip--H4mrmE": true
+      },
+      "thumbnail": "https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg",
+      "title": "MESSI"
     },
-    "-NRLgFq6ZUip--H4mrmE": {
-      "username": "Kevin Pig",
-      "email": "a2V2aW56aHVAZ21haWwuY29t",
-      "passHash": "$2b$10$U.nt8kwsJOpE0b4um9GxYuk1OKillecpNXKpOwhIS.10Gm665YCpC"
+    "-NRLjCHCz2UlNpdc4weE": {
+      "authorID": "-NRLgFq6ZUip--H4mrmE",
+      "body": "Cristiano Ronaldo, often referred to simply as Ronaldo, is a Portuguese professional football player widely considered one of the greatest players of all time. He has won numerous awards and accolades throughout his career, including five Ballon d'Or titles, and has played for some of the top clubs in Europe, including Manchester United, Real Madrid, and Juventus. Known for his incredible speed, agility, and precision on the field, Ronaldo is also recognized for his charitable contributions off the field and his role as a global ambassador for the sport of football.",
+      "comments": {
+        "-NRUtkjUEZptyE14tpCD": {
+          "comment": "not my goat",
+          "userID": "-NRLgFq6ZUip--H4mrmE"
+        }
+      },
+      "date": "Mar 24, 2023",
+      "thumbnail": "https://cdn.discordapp.com/attachments/1032338965266702338/1089022748191367329/fifa-wc-cristiano-ronaldo-stars-as-portugal-defeat-ghana-3-2-in-thrilling-match.webp",
+      "title": "Ronaldo"
     }
   },
   "userIDList": {
+    "ZG1pdHJ5aXZhbm92QGdtYWlsLmNvbQ==": {
+      "id": "-NRPv2XinhS7uTIh54wm"
+    },
     "ZGFuaWVseHVAZ21haWwuY29t": {
       "id": "-NRLgSkCGchJxroOTM9l"
     },
@@ -35,30 +57,36 @@
       "id": "-NRLg0PgNitNzSWFTnj1"
     }
   },
-  "friendList": {
-    "-NRLg0PgNitNzSWFTnj1": {
-      "-NRLfcnuZzeUjyc_2FBH": true,
-      "-NRLgFq6ZUip--H4mrmE": true,
-      "-NRLgSkCGchJxroOTM9l": true
-    },
+  "userList": {
     "-NRLfcnuZzeUjyc_2FBH": {
-      "-NRLg0PgNitNzSWFTnj1": true
-    }
-  },
-  "postList": {
-    "-NRLhi1MpWg9cGLCOTgl": {
-      "authorID": "-NRLg0PgNitNzSWFTnj1",
-      "title": "MESSI",
-      "body": "Lionel Messi, a young boy from Rosario, Argentina, had a passion for soccer. Despite his small stature, he was scouted by FC Barcelona at just 13 years old. He quickly made a name for himself on the first team, leading them to numerous victories and championships. Messi faced challenges and criticism but remained dedicated to his craft. In the end, his hard work paid off, cementing his place in soccer history as one of the greatest players of all time.",
-      "thumbnail": "https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg",
-      "date": "Mar 20, 2023"
+      "avatar": "https://cdn.discordapp.com/avatars/685613108630257701/0220c98cc5a41a8e5d924d68dfaea279.webp?size=4096",
+      "email": "ZmFueWFuZ0BnbWFpbC5jb20=",
+      "passHash": "$2b$10$nU5LG0jeshd1yCQ1VnqNvOACNfaZiFfOSZQZHEt8a.y0l7h9LEa9y",
+      "username": "Fan Yang"
     },
-    "-NRLjCHCz2UlNpdc4weE": {
-      "authorID": "-NRLgFq6ZUip--H4mrmE",
-      "title": "Ronaldo",
-      "body": "Cristiano Ronaldo, often referred to simply as Ronaldo, is a Portuguese professional football player widely considered one of the greatest players of all time. He has won numerous awards and accolades throughout his career, including five Ballon d'Or titles, and has played for some of the top clubs in Europe, including Manchester United, Real Madrid, and Juventus. Known for his incredible speed, agility, and precision on the field, Ronaldo is also recognized for his charitable contributions off the field and his role as a global ambassador for the sport of football.",
-      "thumbnail": "https://cdn.discordapp.com/attachments/1032338965266702338/1089022748191367329/fifa-wc-cristiano-ronaldo-stars-as-portugal-defeat-ghana-3-2-in-thrilling-match.webp",
-      "date": "Mar 24, 2023"
+    "-NRLg0PgNitNzSWFTnj1": {
+      "avatar": "https://cdn.discordapp.com/avatars/420054684762374146/2bf00d8fdeeed46439f6283ec94af398.webp?size=4096",
+      "email": "c3RldmVuY2hlbkBnbWFpbC5jb20=",
+      "passHash": "$2b$10$vDCzGc089Kcd2bFXI3BaW.pKY7hH5APxkFGkRGG./sWwS9zu0D3Hu",
+      "username": "Steven Chen"
+    },
+    "-NRLgFq6ZUip--H4mrmE": {
+      "avatar": "https://cdn.discordapp.com/avatars/584069484675858501/42f3e818993dadddd7ae4ec8b8c06f7e.webp?size=4096",
+      "email": "a2V2aW56aHVAZ21haWwuY29t",
+      "passHash": "$2b$10$U.nt8kwsJOpE0b4um9GxYuk1OKillecpNXKpOwhIS.10Gm665YCpC",
+      "username": "Kevin Pig"
+    },
+    "-NRLgSkCGchJxroOTM9l": {
+      "avatar": "https://cdn.discordapp.com/avatars/390958985622323200/1cacc2459d2aee0c59438e83be344824.webp?size=4096",
+      "email": "ZGFuaWVseHVAZ21haWwuY29t",
+      "passHash": "$2b$10$klJ/bN1BirMN2hkCIV5OW.Hn/59/a7LMG75A8UJjFqdfTLs4ZQWDi",
+      "username": "Daniel Xu"
+    },
+    "-NRPv2XinhS7uTIh54wm": {
+      "avatar": "https://th.bing.com/th/id/OIG.Y2w_jcLUPac_vIYC55Am?pid=ImgGn",
+      "email": "ZG1pdHJ5aXZhbm92QGdtYWlsLmNvbQ==",
+      "passHash": "$2b$10$OqVZXmOV4teSHfuS2mnX2OQS7STHn3ftVfA9lut5ivmYZr/fj9Ttq",
+      "username": "Dmitry Ivanov"
     }
   },
   "usersPostList": {

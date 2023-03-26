@@ -36,7 +36,7 @@ export default async function postHandler(
             const snapshot = await get(postListRef);
 
             if (snapshot.exists()) {
-                res.status(200).json(snapshot.val());
+                return res.status(200).json(snapshot.val());
             }
             res.status(404).json({ message: "No Post Found"});
         } catch {

@@ -12,6 +12,7 @@
 | `email` | `string` |  Email to register with |
 | `password` | `string` |  Password to register with|
 | `username` | `string` |  Your preferred username |
+| `avatar` | `string` |  Avatar Image Url |
 
 #### Login to get authorization token
 
@@ -23,6 +24,19 @@
 | :-------- | :------- | :------------------------- |
 | `email` | `string` |  The user's email you are trying to login |
 | `password` | `string` |  The user's password you are trying to login |
+
+#### Retrieve user info
+```
+  GET /api/users/${id}
+```
+
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` |  The target user's id |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | Author token obtained from Login.  Uses bearer authentication |
 
 #### Get all posts
 
@@ -42,7 +56,7 @@
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
-| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication |
 
 #### Get specific post
 ```
@@ -62,7 +76,22 @@
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
-| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication |
+
+#### Like/Comment specific post
+```
+  POST /api/posts/${postID}
+```
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `postID` | `string` |  Unique hashed ID for target post |
+| `userID` | `string` |  Unique hashed ID for author of new comment/like |
+| `like` | `boolean` | If true, the author will like this post  |
+| `comment` | `string` | __Optional.__ If provided, the author will post this comment under the post |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication |
 
 #### Get friend list for user
 ```
@@ -88,4 +117,4 @@
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
-| `authorization` | `string` | User1's token obtained from Login. Uses bearer authentication
+| `authorization` | `string` | User1's token obtained from Login. Uses bearer authentication |
