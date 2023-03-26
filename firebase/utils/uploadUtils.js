@@ -26,13 +26,3 @@ export const uploadProfileImageFromFile = async (file, imageName) => {
 		console.log('Uploaded a blob or file!');
 	})
 }
-
-export const getAllFilesFromFolderUrl = async (folderUrl) => {
-	const folderRef = ref(storage, folderUrl);
-	// Find all the prefixes, items and return them
-	listAll(folderRef).then((res) => {
-			return res;
-		}).catch((error) => {
-			console.log(error.code);
-		});
-}

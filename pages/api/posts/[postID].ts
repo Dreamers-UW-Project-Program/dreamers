@@ -14,7 +14,7 @@ export default async function postHandler(
     if (req.method === "GET") {
         try {
             const { postID } = req.query;
-            console.log(postID);
+            //console.log(postID);
 
             const postListRef = ref(db, '/postList/' + postID);
             const snapshot = await get(postListRef);
@@ -22,7 +22,7 @@ export default async function postHandler(
             if (snapshot.exists()) {
                 return res.status(200).json(snapshot.val());
             }
-            res.status(404).json({ message: "Post Not Found" });
+            return res.status(404).json({ message: "Post Not Found" });
         } catch (err) {
             console.log(err);
             res.status(400).json({ message: "Invalid Request" });

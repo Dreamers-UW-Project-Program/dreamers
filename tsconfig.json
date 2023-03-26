@@ -13,8 +13,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@customTypes/*": ["customTypes/*"]
+    }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Bot/Bot.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "customTypes/*.d.ts", "components/Bot/Bot.tsx"],
   "exclude": ["node_modules"]
 }
