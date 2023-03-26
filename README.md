@@ -36,7 +36,7 @@
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
-| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
+| `authorization` | `string` | Author token obtained from Login.  Uses bearer authentication |
 
 #### Get all posts
 
@@ -56,7 +56,7 @@
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
-| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication |
 
 #### Get specific post
 ```
@@ -76,7 +76,22 @@
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
-| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication |
+
+#### Like/Comment specific post
+```
+  POST /api/posts/${postID}
+```
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `postID` | `string` |  Unique hashed ID for target post |
+| `userID` | `string` |  Unique hashed ID for author of new comment/like |
+| `like` | `boolean` | If true, the author will like this post  |
+| `comment` | `string` | __Optional.__ If provided, the author will post this comment under the post |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication |
 
 #### Get friend list for user
 ```
@@ -102,4 +117,4 @@
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
-| `authorization` | `string` | User1's token obtained from Login. Uses bearer authentication
+| `authorization` | `string` | User1's token obtained from Login. Uses bearer authentication |

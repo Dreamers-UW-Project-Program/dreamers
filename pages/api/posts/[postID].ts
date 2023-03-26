@@ -1,10 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { database as db } from "../../../firebase/firebase.js"
-import { ref, get, remove } from "firebase/database"
+import { ref, get, remove, set, push } from "firebase/database"
 import { getToken, getUserIDByToken } from "../../../firebase/utils/loginTokenUtils.js"
 
 type Data = {
-    message: string
+    message?: string,
+    userID?: string,
+    like?: boolean,
+    comment?: string
 }
 
 export default async function postHandler(
@@ -27,6 +30,39 @@ export default async function postHandler(
             console.log(err);
             res.status(400).json({ message: "Invalid Request" });
         }
+    } else if (req.method == "POST") {
+        try {
+            const { postID } = req.query;
+            const { like, comment, userID } = req.body;
+
+            const token = getToken(req);
+
+            if (!token) {
+                return res.status(401).json({ message: "token missing or invalid" });
+            }
+
+            const id = await getUserIDByToken(token);
+            if (id != userID) {
+                return res.status(401).json({ message: "token missing or invalid" });
+            }
+
+            if (like) {
+                const likeRef = ref(db, `/postList/${postID}/likes/${userID}`);
+                await set(likeRef, true);
+            }
+
+            if (comment) {
+                const commentsRef = ref(db, `/postList/${postID}/comments`);
+                const newCommentRef = await push(commentsRef);
+                await set(newCommentRef, { userID, comment });
+            }
+
+            res.status(201).json({ like, comment, userID });
+        } catch (err) {
+            console.log(err);
+            res.status(400).send({ message: "Invalid Request" });
+        }
+
     } else if (req.method === "DELETE") {
         try {
             const { postID } = req.query;
@@ -48,7 +84,7 @@ export default async function postHandler(
             const snapshot = await get(usersPostRef);
 
             if (!snapshot.exists()) {
-                return res.status(404).json({ message: "Post Not Found"});
+                return res.status(404).json({ message: "Post Not Found" });
             }
 
             await remove(usersPostRef);
@@ -56,11 +92,11 @@ export default async function postHandler(
             const postRef = ref(db, '/postList/' + postID);
             await remove(postRef);
 
-            res.status(200).json({ message: "Delete Successful"});
+            res.status(200).json({ message: "Delete Successful" });
 
         } catch (err) {
             console.log(err);
-            res.status(400).send({ message: "Invalid Request"});
+            res.status(400).send({ message: "Invalid Request" });
         }
     } else {
         res.status(405).send({ message: 'Only GET and POST requests allowed' });
