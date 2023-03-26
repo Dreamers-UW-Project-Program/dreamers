@@ -6,7 +6,15 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {}, 
+    extend: {
+      fontFamily: {
+        deliciousHandrawnRegular: ["DeliciousHandrawn Regular", "serif"],
+        montserratRegular: ["Montserrat Regular", "sans-serif"],
+        montserratBold: ["Montserrat Bold", "sans-serif"],
+        montserratMedium: ["Montserrat Medium", "sans-serif"],
+        montserratSemiBold: ["Montserrat Semi-Bold", "sans-serif"],
+      },
+    }, 
     screens: {
       '2xs': '360px',
       'iPhone12': '390px',

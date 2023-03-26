@@ -26,10 +26,60 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #EAA436;
+  background: #fdba74;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #d48b17; 
+  background: #fdba74; 
+}
+
+/**************************************************** SVG ******************************************************/
+
+.filter-white{
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+}
+
+
+
+
+/*************************************************** EXTRA CSS **************************************************/
+.icon{
+  transition: 1s;
+}
+.icon:hover{
+  transition: 1s;
+}
+.icon-shadow{
+  transition: 1s;
+}
+.icon-shadow:hover{
+  transition: 1s;
+  filter: drop-shadow(0 0 10px #fff);
+  cursor: pointer;
+  animation: ease-in-out;
+}
+
+
+/*************************************************** FONTS **************************************************/
+
+@font-face{
+    font-family: "DeliciousHandrawn Regular";
+    src: url('../public/fonts/DeliciousHandrawn-Regular.ttf');
+}
+@font-face{
+  font-family: "Montserrat Regular";
+  src: url('../public/fonts/Montserrat-Regular.ttf');
+}
+@font-face{
+  font-family: "Montserrat Bold";
+  src: url('../public/fonts/Montserrat-Bold.ttf');
+}
+@font-face{
+  font-family: "Montserrat Medium";
+  src: url('../public/fonts/Montserrat-Medium.ttf');
+}
+@font-face{
+  font-family: "Montserrat Semi-Bold";
+  src: url('../public/fonts/Montserrat-SemiBold.ttf');
 }

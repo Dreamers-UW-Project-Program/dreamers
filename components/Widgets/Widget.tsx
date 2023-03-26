@@ -4,7 +4,9 @@ interface WidgetProps {
 
 const Widget = (props: WidgetProps) => {
     return (
-        <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white">
+        <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-2 text-white">
+            <h6 className="font-montserratRegular text-lg">Widget Title</h6>
+            <hr className="w-full h-3 bg-gradient-to-r from-rose-400 to-orange-300"></hr>
             {props.inner ?? props.inner}
         </div>
     )
