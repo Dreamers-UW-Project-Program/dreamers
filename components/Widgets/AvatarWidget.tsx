@@ -1,5 +1,40 @@
 import Image from "next/image";
+import { getFriendsListByID, getUserByID } from "../../firebase/utils/userUtils";
+import { useEffect, useState } from "react";
+
 function AvatarWidget() {
+  const id = "-NRPv2XinhS7uTIh54wm";
+  const [avatar, setAvatar] = useState("");
+	const [userName, setUserName] = useState({});
+  useEffect(() => {
+    async function getAvatar(id: string) {
+      try {
+        const res = await getUserByID(
+          id ?? process.env.DEFAULT_USER_ID ?? ""
+        );
+        console.log(userName);
+        setAvatar(res.avatar);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getAvatar(id ?? process.env.DEFAULT_USER_ID ?? "");
+  }, []);
+  useEffect(() => {
+    async function getUserName(id: string) {
+      try {
+        const res = await getUserByID(
+          id ?? process.env.DEFAULT_USER_ID ?? ""
+        );
+        console.log(userName);
+        setUserName(res.username);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    getUserName(id ?? process.env.DEFAULT_USER_ID ?? "");
+  }, []);
+
   function Greeting() {
     const hour = new Date().getHours();
     let greeting = "";
@@ -12,19 +47,18 @@ function AvatarWidget() {
     }
     return greeting;
   }
+
   return (
     <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white">
       <div className="flex flex-row items-center justify-evenly mx-[0.5vw] my-[1vw] h-[8vw]">
-        <Image
-          src="/images/profilePicture.jpg"
+        <img
+          src={avatar}
           alt="Your Profile Picture"
-          width={100}
-          height={100}
-          className="rounded-full"
+          className="w-[8vw] rounded-full"
         />
         <div>
           <p className="text-white font-serif">{Greeting()}!</p>
-          <p className="text-white font-serif">@Your ID</p>
+          <p className="text-white font-serif">{"@" + userName}</p>
         </div>
       </div>
     </div>
