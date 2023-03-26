@@ -1,57 +1,76 @@
 {
   "userList": {
-    "steven_user_id": {
-      "username": "steven chen",
-      "email": "stevenchen@gmail.com",
-      "passHash": "Pass2"
+    "-NRLg0PgNitNzSWFTnj1": {
+      "username": "Steven Chen",
+      "email": "c3RldmVuY2hlbkBnbWFpbC5jb20=",
+      "passHash": "$2b$10$vDCzGc089Kcd2bFXI3BaW.pKY7hH5APxkFGkRGG./sWwS9zu0D3Hu",
+      "avatar": "https://cdn.discordapp.com/avatars/420054684762374146/2bf00d8fdeeed46439f6283ec94af398.webp?size=4096"
     },
-    "fans_user_id": {
-      "username": "fan yang",
-      "email": "fanyang@gmail.com",
-      "passHash": "Pass2"
+    "-NRLfcnuZzeUjyc_2FBH": {
+      "username": "Fan Yang",
+      "email": "ZmFueWFuZ0BnbWFpbC5jb20=",
+      "passHash": "$2b$10$nU5LG0jeshd1yCQ1VnqNvOACNfaZiFfOSZQZHEt8a.y0l7h9LEa9y",
+      "avatar": "https://cdn.discordapp.com/avatars/685613108630257701/0220c98cc5a41a8e5d924d68dfaea279.webp?size=4096"
     },
-    "daniel_user_id": {
-      "username": "daniel xu",
-      "email": "danielxu@gmail.com",
-      "passHash": "Pass3"
+    "-NRLgSkCGchJxroOTM9l": {
+      "username": "Daniel Xu",
+      "email": "ZGFuaWVseHVAZ21haWwuY29t",
+      "passHash": "$2b$10$klJ/bN1BirMN2hkCIV5OW.Hn/59/a7LMG75A8UJjFqdfTLs4ZQWDi",
+      "avatar": "https://cdn.discordapp.com/avatars/390958985622323200/1cacc2459d2aee0c59438e83be344824.webp?size=4096"
     },
-    "kevin_user_id": {
-      "username": "kevin pig",
-      "email": "kevinpig@gmail.com",
-      "passHash": "Pass4"
+    "-NRLgFq6ZUip--H4mrmE": {
+      "username": "Kevin Pig",
+      "email": "a2V2aW56aHVAZ21haWwuY29t",
+      "passHash": "$2b$10$U.nt8kwsJOpE0b4um9GxYuk1OKillecpNXKpOwhIS.10Gm665YCpC",
+      "avatar": "https://cdn.discordapp.com/avatars/584069484675858501/42f3e818993dadddd7ae4ec8b8c06f7e.webp?size=4096"
     }
   },
   "userIDList": {
+    "ZGFuaWVseHVAZ21haWwuY29t": {
+      "id": "-NRLgSkCGchJxroOTM9l"
+    },
+    "ZmFueWFuZ0BnbWFpbC5jb20=": {
+      "id": "-NRLfcnuZzeUjyc_2FBH"
+    },
+    "a2V2aW56aHVAZ21haWwuY29t": {
+      "id": "-NRLgFq6ZUip--H4mrmE"
+    },
+    "c3RldmVuY2hlbkBnbWFpbC5jb20=": {
+      "id": "-NRLg0PgNitNzSWFTnj1"
+    }
   },
   "friendList": {
-    "steven_user_id": {
-      "fans_user_id": true,
-      "daniel_user_id": true,
-      "kevin_user_id": true
+    "-NRLg0PgNitNzSWFTnj1": {
+      "-NRLfcnuZzeUjyc_2FBH": true,
+      "-NRLgFq6ZUip--H4mrmE": true,
+      "-NRLgSkCGchJxroOTM9l": true
     },
-    "fans_user_id": {
-      "steven_user_id": true
-    },
-    "kevin_user_id": {
-      "steven_user_id": true
-    },
-    "daniel_user_id": {
-      "steven_user_id": true
+    "-NRLfcnuZzeUjyc_2FBH": {
+      "-NRLg0PgNitNzSWFTnj1": true
     }
   },
   "postList": {
-    "post1": {
-      "id": "post1_id",
+    "-NRLhi1MpWg9cGLCOTgl": {
+      "authorID": "-NRLg0PgNitNzSWFTnj1",
       "title": "MESSI",
-      "author": "steven_user_id",
-      "date": "Mar 20, 2023",
       "body": "Lionel Messi, a young boy from Rosario, Argentina, had a passion for soccer. Despite his small stature, he was scouted by FC Barcelona at just 13 years old. He quickly made a name for himself on the first team, leading them to numerous victories and championships. Messi faced challenges and criticism but remained dedicated to his craft. In the end, his hard work paid off, cementing his place in soccer history as one of the greatest players of all time.",
-      "thumbnail": "https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"
+      "thumbnail": "https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg",
+      "date": "Mar 20, 2023"
+    },
+    "-NRLjCHCz2UlNpdc4weE": {
+      "authorID": "-NRLgFq6ZUip--H4mrmE",
+      "title": "Ronaldo",
+      "body": "Cristiano Ronaldo, often referred to simply as Ronaldo, is a Portuguese professional football player widely considered one of the greatest players of all time. He has won numerous awards and accolades throughout his career, including five Ballon d'Or titles, and has played for some of the top clubs in Europe, including Manchester United, Real Madrid, and Juventus. Known for his incredible speed, agility, and precision on the field, Ronaldo is also recognized for his charitable contributions off the field and his role as a global ambassador for the sport of football.",
+      "thumbnail": "https://cdn.discordapp.com/attachments/1032338965266702338/1089022748191367329/fifa-wc-cristiano-ronaldo-stars-as-portugal-defeat-ghana-3-2-in-thrilling-match.webp",
+      "date": "Mar 24, 2023"
     }
   },
   "usersPostList": {
-    "steven_user_id": {
-      "post1_id": true
+    "-NRLg0PgNitNzSWFTnj1": {
+      "-NRLhi1MpWg9cGLCOTgl": true
+    },
+    "-NRLgFq6ZUip--H4mrmE": {
+      "-NRLjCHCz2UlNpdc4weE": true
     }
   }
 }
