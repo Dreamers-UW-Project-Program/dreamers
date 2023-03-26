@@ -12,6 +12,7 @@
 | `email` | `string` |  Email to register with |
 | `password` | `string` |  Password to register with|
 | `username` | `string` |  Your preferred username |
+| `avatar` | `string` |  Avatar Image Url |
 
 #### Login to get authorization token
 
@@ -23,6 +24,19 @@
 | :-------- | :------- | :------------------------- |
 | `email` | `string` |  The user's email you are trying to login |
 | `password` | `string` |  The user's password you are trying to login |
+
+#### Retrieve user info
+```
+  GET /api/users/${id}
+```
+
+| Query Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `id` | `string` |  The target user's id |
+
+| Header | Type | Description
+| :-------- | :------- | :------------------------- |
+| `authorization` | `string` | Author token obtained from Login. Uses bearer authentication
 
 #### Get all posts
 

@@ -20,6 +20,7 @@
 *.pem
 /firebase/hardcode.js
 /pages/api/hardcode.ts
+/ML
 
 # debug
 npm-debug.log*
