@@ -21,13 +21,13 @@ function Login() {
 
         event.preventDefault();
 
-        const userObj = await verifyPass({email, password});
+        const userObj = await verifyPass({ email, password });
 
         console.log(userObj);
 
         if (userObj != null) {
             renderState.setUser(userObj);
-            console.log('Logged in successfully');
+            // console.log('Logged in successfully');
             localStorage.setItem('userObj', JSON.stringify(userObj));
             renderState.setLogIn(false);
             renderState.setMainDisplay(true);

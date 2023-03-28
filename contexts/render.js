@@ -7,11 +7,11 @@ export function RenderContextProvider({ children }) {
     const [logIn, setLogIn] = useState(true);
     const [register, setRegister] = useState(false);
     const [mainDisplay, setMainDisplay] = useState(false);
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         const storedUser = localStorage.getItem('userObj');
-        if (storedUser != "") {
+        if (storedUser != 'null') {
             const userObj = JSON.parse(storedUser);
             console.log("user", userObj);
             setUser(userObj);
@@ -22,8 +22,9 @@ export function RenderContextProvider({ children }) {
     }, []);
 
     useEffect(() => {
+        console.log("state changed", user);
         localStorage.setItem('userObj', JSON.stringify(user));
-        if (user == "") {
+        if (user == "null") {
             setMainDisplay(false);
             setLogIn(true);
         }
