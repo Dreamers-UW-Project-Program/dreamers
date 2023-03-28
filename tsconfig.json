@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
-      "@customTypes/*": ["customTypes/*"]
+      "@customTypes/*": ["customTypes/*"],
+      "@firebase/*": ["firebase/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "customTypes/*.d.ts", "components/Bot/Bot.tsx"],

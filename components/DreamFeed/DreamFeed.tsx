@@ -4,7 +4,6 @@ import { Post } from "@customTypes/globals";
 
 const DreamFeed = () => {
     const [posts, setPosts] = useState<{[id: string]: Post}>({});
-
     useEffect(() => {
         const getPosts = async () => {
             const fetchedPosts = await fetch("/api/posts", {
@@ -23,13 +22,15 @@ const DreamFeed = () => {
             <p className="font-semibold text-white font-serif text-2xl m-7 border-b-[1vw]">Your Friends Dreamed of......</p>
             <div className="flex flex-col gap-[1vw]">
                 {Object.keys(posts).map(id => {
-                    return <FeedPost 
+                    return  <FeedPost 
                                 key={id} 
                                 body={posts[id]["body"]}
                                 title={posts[id]["title"]}
                                 authorID={posts[id]["authorID"]}
                                 date={posts[id]["date"]}
                                 thumbnail={posts[id]["thumbnail"]}
+                                comments={posts[id]["comments"] ?? {}}
+                                likes={posts[id]["likes"] ?? {}}
                             />
                 })}
             </div>
