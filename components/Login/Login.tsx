@@ -1,38 +1,38 @@
 import React, { useState, useContext } from 'react';
-import { RenderContext } from '../../contexts/render'
+import { RenderContext } from '../../contexts/render.js'
+import { verifyPass } from '../../services/loginServices.js';
 
 function Login() {
     const renderState = useContext(RenderContext);
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     function handleUsernameChange(event: React.ChangeEvent<HTMLInputElement>) {
         const inputValue = event.target.value;
-        setUsername(inputValue);
+        setEmail(inputValue);
     }
 
     function handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>) {
         setPassword(event.target.value);
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        /*
-        TEMPORARY
-        renderState.setLogIn(false);
-        renderState.setMainDisplay(true);
-        */
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+
         event.preventDefault();
 
-        // TODO: Send a request to the server to validate the username and password
+        const userObj = await verifyPass({email, password});
 
-        if (username === 'exampleuser' && password === 'examplepass') {
-        // TODO: Redirect the user to the main page
-        console.log('Logged in successfully');
-        renderState.setLogIn(false);
-        renderState.setMainDisplay(true);
+        console.log(userObj);
+
+        if (userObj != null) {
+            renderState.setUser(userObj);
+            console.log('Logged in successfully');
+            localStorage.setItem('userObj', JSON.stringify(userObj));
+            renderState.setLogIn(false);
+            renderState.setMainDisplay(true);
         } else {
-        setErrorMessage('Incorrect username or password');
+            setErrorMessage('Incorrect username or password');
         }
     }
 
@@ -49,7 +49,7 @@ function Login() {
                 type="text"
                 id="username"
                 name="username"
-                value={username}
+                value={email}
                 onChange={handleUsernameChange}
             />
             <label className="text-white" htmlFor="password">Password:</label>

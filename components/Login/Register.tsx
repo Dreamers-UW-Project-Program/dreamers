@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { RenderContext } from '../../contexts/render';
+import { register } from '../../services/loginServices';
 
 interface RegisterFormData {
   username: string;

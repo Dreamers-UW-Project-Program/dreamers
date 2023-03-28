@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { getFriendsListByID, getUserByID } from "../../firebase/utils/userUtils";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { RenderContext } from "contexts/render";
 
 function AvatarWidget() {
-  const id = "-NRPv2XinhS7uTIh54wm";
+  const renderState = useContext(RenderContext);
+  const id = renderState.user.userID;
   const [avatar, setAvatar] = useState("");
 	const [userName, setUserName] = useState({});
+
   useEffect(() => {
     async function getAvatar(id: string) {
       try {
@@ -48,6 +51,11 @@ function AvatarWidget() {
     return greeting;
   }
 
+  function logout() {
+    renderState.setUser("");
+    localStorage.removeItem('userObj');
+  }
+
   return (
     <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white">
       <div className="flex flex-row items-center justify-evenly mx-[0.5vw] my-[1vw] h-[8vw]">
@@ -58,7 +66,7 @@ function AvatarWidget() {
         />
         <div>
           <p className="text-white font-serif">{Greeting()}!</p>
-          <p className="text-white font-serif">{"@" + userName}</p>
+          <p className="text-white font-serif" onClick={logout}>{"@" + userName + " click to logout"}</p>
         </div>
       </div>
     </div>

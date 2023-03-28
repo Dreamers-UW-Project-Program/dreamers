@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
 type Data = {
-    email?: string,
+    userID?: string,
     token?: string,
     message?: string
 }
@@ -37,7 +37,7 @@ export default async function handler(
         // uses RAW email, in ascii
         const token = jwt.sign(email, process.env.TOKEN_HASH);
 
-        res.status(200).send({ token, email });
+        res.status(200).send({ token, userID });
     } catch (err) {
         console.log(err);
         res.status(400).send({ message: 'Invalid body parameters'});

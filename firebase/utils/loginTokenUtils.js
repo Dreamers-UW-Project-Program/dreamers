@@ -1,4 +1,4 @@
-import { encodeEmail, getUserID } from "./userUtils.js"
+import { getUserByID, encodeEmail, getUserID } from "./userUtils.js";
 
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
