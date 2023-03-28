@@ -63,7 +63,10 @@
   box-shadow: 0 0 14px #fff;
 }
 .sunset-box-shadow{
-  box-shadow: 0 0 16px #fda4af;
+  box-shadow: 0 0 20px #fda4af;
+}
+.sunset-hr-shadow{
+  box-shadow: 0 0 10px #fda4af;
 }
 
 
