@@ -1,4 +1,4 @@
-import { PostComments, PostLikes } from "@customTypes/globals";
+import { Comment, PostComments, PostLikes, User } from "@customTypes/globals";
 import { getUserByID } from "@firebase/utils/userUtils";
 import { useState, useEffect } from "react";
 
@@ -8,7 +8,10 @@ type DreamResponseProps = {
 }
 const DreamResponse = ( props: DreamResponseProps) => {
     //console.log(props.comments)
-    const [users, setUsers] = useState({likeUsers: {}, commentUsers: {}});
+    const [users, setUsers] = useState<{
+        likeUsers: {[id: string]: User},
+        commentUsers: {[id: string]: {user: User, commentID: string}} 
+    }>({likeUsers: {}, commentUsers: {}});
 
     useEffect(() => {
         const getLikeUser = async (id: string) => {
@@ -28,7 +31,7 @@ const DreamResponse = ( props: DreamResponseProps) => {
             const user = await getUserByID(id);
             setUsers(users => ({
                 likeUsers: users.likeUsers,
-                commentUsers: {...users.commentUsers, [id]: [user, commentID]}
+                commentUsers: {...users.commentUsers, [id]: {user: user, commentID: commentID}}
             }));
             //console.log("comment", commentUsers)
         }
@@ -53,8 +56,9 @@ const DreamResponse = ( props: DreamResponseProps) => {
                 <p className="border-b-[0.1vw] border-orange-500">💬</p>
                 <div className="text-white">
                     {Object.keys(users.commentUsers).map(userID => {
-                        const user = users.commentUsers[userID][0];
-                        return <p>{user["username"]}: {props.comments[users.commentUsers[userID][1]]["comment"]}</p>
+                        const user: User = users.commentUsers[userID]["user"]
+                        const comment: Comment = props.comments[users.commentUsers[userID]["commentID"]];
+                        return <p>{user["username"]}: {comment["comment"]}</p>
                     })}
                 </div>
             </div>
