@@ -16,7 +16,7 @@ const DreamFeed = () => {
         setPosts(prevPosts => ({ ...prevPosts, ...fetchedPosts }));
         setPage(pageNumber + 1);
     };
-
+    
     useEffect(() => {
         const getPosts = async () => {
             const fetchedPosts = await fetch(`/api/posts?page=${page}`, {
@@ -33,7 +33,6 @@ const DreamFeed = () => {
     return (
         <div className="rounded-[2rem] mt-[2vw] w-[80%] h-[100vw] bg-transparent border-2 border-white z-30">
             <p className="font-semibold text-white font-serif text-2xl m-7 border-b-[1vw]">Your Friends Dreamed of......</p>
-
             <InfiniteScroll
                 pageStart={page}
                 loadMore={loadMore}
@@ -49,7 +48,9 @@ const DreamFeed = () => {
                                     title={posts[id]["title"]}
                                     authorID={posts[id]["authorID"]}
                                     date={posts[id]["date"]}
-                                    thumbnail={posts[id]["thumbnail"]}g
+                                    thumbnail={posts[id]["thumbnail"]}
+                                    comments={posts[id]["comments"] ?? {}}
+                                    likes={posts[id]["likes"] ?? {}}
                                 />
                     })}
                 </div>
