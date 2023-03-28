@@ -40,7 +40,7 @@ const FriendsList = ( props: FriendsListProps ) => {
 	}, [friendsList])
     
     return (
-        <div className="mx-4 mb-6 h-full overflow-hidden">
+        <div className="mx-4 mb-6 h-full overflow-hidden font-robotoLight">
 			<div className="text-md">Your Friends</div>
             <div className="flex flex-col items-start text-sm overflow-auto h-full scroll-smooth">
 				{Object.keys(friends??{}).map(friend => {

@@ -57,16 +57,17 @@ function AvatarWidget() {
   }
 
   return (
-    <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white">
+    <div className="flex items-center justify-evenly w-[25vw] h-[25%] bg-transparent my-[1vw] border-r-[2px] border-b-[2px] border-t-[3px] border-l-[3px] white-box-shadow text-white">
       <div className="flex flex-row items-center justify-evenly mx-[0.5vw] my-[1vw] h-[8vw]">
         <img
           src={avatar}
           alt="Your Profile Picture"
-          className="w-[8vw] rounded-full"
+          className="w-[8vw] rounded-full border-white border-2 sunset-box-shadow mr-8"
         />
         <div>
-          <p className="text-white font-serif">{Greeting()}!</p>
-          <p className="text-white font-serif" onClick={logout} >{"@" + userName + " click to logout"}</p>
+          <p className="text-white font-robotoRegular text-lg">{Greeting()}!</p>
+          <p className="text-white font-robotoLight">{"@" + userName}</p>
+          <div className="text-black font-robotoLight bg-white mt-4 mx-auto text-center p-1 rounded-lg icon-shadow hover:scale-105" onClick={logout}>Logout</div>
         </div>
       </div>
     </div>

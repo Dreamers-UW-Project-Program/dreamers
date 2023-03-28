@@ -14,6 +14,9 @@ module.exports = {
         montserratBold: ["Montserrat Bold", "sans-serif"],
         montserratMedium: ["Montserrat Medium", "sans-serif"],
         montserratSemiBold: ["Montserrat Semi-Bold", "sans-serif"],
+        latoRegular: ["Lato Regular", "sans-serif"],
+        robotoLight: ["Roboto Light", "sans-serif"],
+        robotoRegular: ["Roboto Regular", "sans-serif"], 
       },
     }, 
     screens: {
