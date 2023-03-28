@@ -52,7 +52,7 @@ function AvatarWidget() {
   }
 
   function logout() {
-    renderState.setUser("");
+    renderState.setUser("null");
     localStorage.removeItem('userObj');
   }
 
@@ -66,7 +66,7 @@ function AvatarWidget() {
         />
         <div>
           <p className="text-white font-serif">{Greeting()}!</p>
-          <p className="text-white font-serif" onClick={logout}>{"@" + userName + " click to logout"}</p>
+          <p className="text-white font-serif" onClick={logout} >{"@" + userName + " click to logout"}</p>
         </div>
       </div>
     </div>
