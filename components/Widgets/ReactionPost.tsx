@@ -23,7 +23,7 @@ function ReactionPost() {
     return " *";
   }
   return (
-    <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white overflow-scroll">
+    <div className="w-[20vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white overflow-scroll">
       <div className="flex flex-col justify-start h-[13vw] grow-0 m-[0.5vw] gap-2">
         <div className="flex flex-row justify-start gap-1">
           <p className="text-white">Your Recent Post: </p>

@@ -57,12 +57,12 @@ function AvatarWidget() {
   }
 
   return (
-    <div className="w-[25vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white">
+    <div className="w-[20vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white">
       <div className="flex flex-row items-center justify-evenly mx-[0.5vw] my-[1vw] h-[8vw]">
         <img
           src={avatar}
           alt="Your Profile Picture"
-          className="w-[8vw] rounded-full"
+          className="w-[5vw] rounded-full"
         />
         <div>
           <p className="text-white font-serif">{Greeting()}!</p>
