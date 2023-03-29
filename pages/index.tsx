@@ -26,10 +26,10 @@ const Home: NextPage = () => {
           ( <Register />)}
           {!renderState.logIn && !renderState.register && renderState.mainDisplay && 
           ( <>
-              <div className="flex w-[30%] relative items-center justify-center">
+              <div className="flex w-[20%] relative items-center justify-center">
                 <Widgets />
               </div>
-              <div className="flex flex-col w-[70%] justify-center items-center overflow-auto">
+              <div className="flex flex-col w-[80%] justify-center items-center overflow-auto">
                 <PreFeed />
                 <DreamFeed />
               </div>

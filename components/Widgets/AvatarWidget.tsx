@@ -57,7 +57,7 @@ function AvatarWidget() {
   }
 
   return (
-    <div className="flex items-center justify-evenly w-[25vw] h-[25%] bg-transparent my-[1vw] rounded-sm border-r-[2px] border-b-[2px] 
+    <div className="flex items-center justify-evenly w-[20vw] h-[25%] bg-transparent my-[1vw] rounded-sm border-r-[2px] border-b-[2px] 
       border-t-[3px] border-l-[3px] white-box-shadow text-white">
       <div className="flex flex-row items-center justify-evenly mx-[0.5vw] my-[1vw] h-[8vw]">
         <img
