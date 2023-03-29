@@ -8,9 +8,9 @@ const Widget = (props: WidgetProps) => {
             rounded-sm white-box-shadow text-white">
             <h6 className="font-robotoRegular pl-2 py-1">
                 <span className="text-xl">Y</span>
-                <span className="text-md">OUR </span> 
+                <span className="text-lg">OUR </span> 
                 <span className="text-xl">F</span>
-                <span className="text-md">RIENDS</span></h6>
+                <span className="text-lg">RIENDS</span></h6>
             <hr className="w-full h-2 mb-2 bg-gradient-to-r from-rose-400 to-orange-300 sunset-hr-shadow"></hr>
             {props.inner ?? props.inner}
         </div>
