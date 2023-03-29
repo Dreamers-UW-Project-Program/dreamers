@@ -2,7 +2,7 @@ import { Post } from "@customTypes/globals";
 
 const DreamContent = (props: Post) => {
   return (
-    <div className="basis-7/10 flex flex-col gap-y-2 text-white border-[0.5vw] px-[4vw] py-[0.5vw] rounded-r-3xl font-serif">
+    <div className="basis-6/10 flex flex-col gap-y-2 text-white border-[0.5vw] px-[4vw] py-[0.5vw] rounded-r-3xl font-serif">
       <div className="flex justify-between">
         <div className="text-lg ">{props.title}</div>
         <div>{props.date}</div>
