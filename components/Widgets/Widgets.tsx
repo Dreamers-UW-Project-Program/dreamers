@@ -10,7 +10,7 @@ const Widgets = () => {
     <div className="fixed top-[55%] left-[15%] fixed-center z-[999]">
       <div className="flex flex-col justify-center items-center h-screen">
         <AvatarWidget />
-        <Widget inner={FriendsList({})} />
+        <Widget inner={FriendsList()} />
         <ReactionPost />
         <Bot />
       </div>
