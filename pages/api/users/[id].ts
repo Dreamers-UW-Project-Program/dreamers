@@ -7,7 +7,7 @@ type Data = {
     message?: string,
 }
 
-export default async function friendsHandler(
+export default async function usersHandler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
