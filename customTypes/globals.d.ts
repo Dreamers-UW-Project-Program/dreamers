@@ -1,5 +1,6 @@
 export interface Post {
     authorID: string;
+    postID: string;
     body: string;
     date: string;
     thumbnail: string;
