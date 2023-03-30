@@ -73,7 +73,7 @@ postHandler.post(async (req, res) => {
         const userID = await getUserIDByToken(token);
         let thumbnail;
 
-        if (req.files.length>0){
+        if (req.files && req.files.length>0){
             thumbnail =  req.files[0].buffer.toString('base64');
         } else {
             thumbnail = await generateBase64(body, "1024x1024");
@@ -90,63 +90,10 @@ postHandler.post(async (req, res) => {
     }
 })
 
-/*
-export default async function postHandler(
-    req: NextApiRequest,
-    res: NextApiResponse<Data>
-) {
+export const config = {
+    api: {
+      bodyParser: false,
+    },
+  }
 
-    if (req.method === "GET") {
-
-        try {
-            const postListRef = ref(db, '/postList');
-            const snapshot = await get(postListRef);
-
-            if (snapshot.exists()) {
-                return res.status(200).json(snapshot.val());
-            }
-            res.status(404).json({ message: "No Post Found" });
-        } catch {
-            res.status(404).json({ message: "No Post Found" });
-        }
-
-    } else if (req.method === "POST") {
-
-        try {
-
-            const token = getToken(req);
-            // console.log(req.headers['authorization']);
-
-            if (!token) {
-                return res.status(401).json({ message: "token missing or invalid" });
-            }
-
-            const { title, body } = req.body;
-
-            let thumbnail = req.body.thumbnail;
-
-            const date = new Date();
-
-            const userID = await getUserIDByToken(token);
-
-            if (!thumbnail) {
-                thumbnail = await generateBase64(body, "1024x1024");
-                // thumbnail now in base64 if successful. Else null.
-                // Do some magic to turn it into url?
-            }
-
-            const postKey = await postListHandler(title, body, thumbnail, userID, date.toString());
-            await usersPostListHandler(userID, postKey || "INVALID KEY");
-
-            res.status(201).send({ authorID: userID, title, body, thumbnail, date });
-        } catch {
-            res.status(400).send({ message: 'Invalid body parameters' });
-        }
-
-
-    } else {
-        res.status(405).send({ message: 'Only GET and POST requests allowed' })
-    }
-
-}
-*/
+export default postHandler;
