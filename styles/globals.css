@@ -23,7 +23,7 @@
 ::-webkit-scrollbar-track {
   display:none;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #fdba74;
@@ -59,6 +59,15 @@
   cursor: pointer;
   animation: ease-in-out;
 }
+.white-box-shadow{
+  box-shadow: 0 0 14px #fff;
+}
+.sunset-box-shadow{
+  box-shadow: 0 0 20px #fda4af;
+}
+.sunset-hr-shadow{
+  box-shadow: 0 0 10px #fda4af;
+}
 
 
 /*************************************************** FONTS **************************************************/
@@ -82,4 +91,16 @@
 @font-face{
   font-family: "Montserrat Semi-Bold";
   src: url('../public/fonts/Montserrat-SemiBold.ttf');
+}
+@font-face{
+  font-family: "Lato Regular";
+  src: url('../public/fonts/Lato-Regular.ttf');
+}
+@font-face{
+  font-family: "Roboto Light";
+  src: url('../public/fonts/Roboto-Light.ttf');
+}
+@font-face{
+  font-family: "Roboto Regular";
+  src: url('../public/fonts/Roboto-Regular.ttf');
 }

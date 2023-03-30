@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { database as db } from "../../firebase/firebase.js"
 import { ref, push, set, get } from "firebase/database"
 import { getToken, getUserIDByToken } from "../../firebase/utils/loginTokenUtils.js"
+import { generateBase64 } from "../../services/imageServices.js"
 
 type Data = {
     authorID?: string,
@@ -38,9 +39,9 @@ export default async function postHandler(
             if (snapshot.exists()) {
                 return res.status(200).json(snapshot.val());
             }
-            res.status(404).json({ message: "No Post Found"});
+            res.status(404).json({ message: "No Post Found" });
         } catch {
-            res.status(404).json({ message: "No Post Found"});
+            res.status(404).json({ message: "No Post Found" });
         }
 
     } else if (req.method === "POST") {
@@ -54,11 +55,19 @@ export default async function postHandler(
                 return res.status(401).json({ message: "token missing or invalid" });
             }
 
-            const { title, body, thumbnail } = req.body;
+            const { title, body } = req.body;
+
+            let thumbnail = req.body.thumbnail;
 
             const date = new Date();
 
             const userID = await getUserIDByToken(token);
+
+            if (!thumbnail) {
+                thumbnail = await generateBase64(body, "1024x1024");
+                // thumbnail now in base64 if successful. Else null.
+                // Do some magic to turn it into url?
+            }
 
             const postKey = await postListHandler(title, body, thumbnail, userID, date.toString());
             await usersPostListHandler(userID, postKey || "INVALID KEY");
