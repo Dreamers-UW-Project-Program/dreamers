@@ -9,7 +9,7 @@ const DreamContent = (props: Post) => {
       </div>
       <div className="flex flex-row gap-2">
         {props.body}
-        <img src={props.thumbnail} className="w-[100%]" />
+        <img src={props.thumbnail} className="w-[15vw]" />
       </div>
       <div className="flex flex-row">
         <p className="text-2xl">💖</p>
