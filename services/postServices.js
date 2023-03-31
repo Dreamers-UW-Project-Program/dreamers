@@ -46,10 +46,10 @@ export async function makePost(title, body, thumbnail, token){
     let formData = new FormData();
     formData.append("title", title);
     formData.append("body", body);
-    formData.append("thumbnail", thumbnail);
+    if (thumbnail) formData.append("thumbnail", thumbnail);
 
     try {
-        const response = await axios.post(`/api/post`, formData, {
+        const response = await axios.post(`/api/posts`, formData, {
             headers: {
                 'authorization': `bearer ${token}`,
                 'Content-Type': 'multipart/form-data'
@@ -60,7 +60,7 @@ export async function makePost(title, body, thumbnail, token){
         }
         return false;
     } catch (e) {
-        console.log(e);
+        console.log(e.response);
         return false;
     }
 }
