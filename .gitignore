@@ -21,6 +21,7 @@
 /firebase/hardcode.js
 /pages/api/hardcode.ts
 /ML
+/pages/api/image_test.ts
 
 # debug
 npm-debug.log*

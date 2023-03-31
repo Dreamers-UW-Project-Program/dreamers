@@ -16,22 +16,27 @@ function Register() {
         username: '',
         password: '',
         confirmPassword: '',
-        email: ''
+        email: '',
     });
+    const [uploadedFile, setUploadedFile] = useState<File>();
+    const [isUploaded, setIsUploaded] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState('');
 
+    function handleFileChange(event: React.ChangeEvent<HTMLInputElement>){
+        if (event.target.files) {
+            const file = event.target.files[0] as File;
+            setUploadedFile(file);
+            setIsUploaded(true);
+        } else {
+            setIsUploaded(false);
+        }
+    }
     function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
         setFormData(prevState => ({ ...prevState, [name]: value }));
     }
 
-    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        
-        // temporary code:
-        renderState.setRegister(false);
-        renderState.setMainDisplay(true);
-
-
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         // validate input fields
@@ -40,10 +45,19 @@ function Register() {
         setErrorMessage('Passwords do not match');
         return;
         }
-
-        // send a request to the server to register the user
-
-        console.log('Registered successfully');
+        
+        if (isUploaded) {
+            await register(
+            formData.email, 
+            formData.password, 
+            formData.username, 
+            uploadedFile);
+            console.log('Registered successfully');
+            renderState.setLogIn(true);
+            renderState.setRegister(false);
+        } else {
+            console.log("No uploaded profile image");
+        }
     }
 
     return (
@@ -83,6 +97,15 @@ function Register() {
                 name="email"
                 value={formData.email} 
                 onChange={handleInputChange} 
+            />
+            <label className="text-white" htmlFor="email">Profile Picture:</label>
+            <input 
+                className="px-3 py-2 rounded-lg mt-1 mb-4"
+                type="file" 
+                id="file" 
+                name="file" 
+                accept="image/png, image/jpeg"
+                onChange={handleFileChange} 
             />
             <button type="submit" className="text-black bg-white mt-5 py-2 px-7 rounded-lg icon-shadow hover:scale-105">Register</button>
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}

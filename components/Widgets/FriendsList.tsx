@@ -1,27 +1,26 @@
 import { getFriendsListByID, getUserByID } from "../../firebase/utils/userUtils";
-import { useEffect, useState } from "react";
-
-interface FriendsListProps {
-    id?: string
-}
+import { useEffect, useState, useContext } from "react";
+import { RenderContext } from "@contexts/render";
 
 type user = {[t: string]: string};
 
-const FriendsList = ( props: FriendsListProps ) => {
+const FriendsList = () => {
+	const renderState = useContext(RenderContext);
+	
     const [friendsList, setFriendsList] = useState({});
 	const [friends, setFriends] = useState<{[s: string]: user}>({});
 
     useEffect(() => {
         async function getFriendsID(id: string) {
             try {
-                const res = await getFriendsListByID(props.id ?? process.env.DEFAULT_USER_ID ?? "");
+                const res = await getFriendsListByID(renderState.user.userID ?? process.env.DEFAULT_USER_ID ?? "");
                 console.log(friendsList)
                 setFriendsList(res);
             } catch (e) {
                 console.log(e)
             }
         }
-        getFriendsID(props.id ?? process.env.DEFAULT_USER_ID ?? "");
+        getFriendsID(renderState.user.userID ?? process.env.DEFAULT_USER_ID ?? "");
     }, [])
 
 	useEffect(() => {

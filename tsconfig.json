@@ -18,7 +18,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@customTypes/*": ["customTypes/*"],
-      "@firebase/*": ["firebase/*"]
+      "@firebase/*": ["firebase/*"],
+      "@contexts/*": ["contexts/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "customTypes/*.d.ts", "components/Bot/Bot.tsx"],

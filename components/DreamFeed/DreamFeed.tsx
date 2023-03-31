@@ -44,6 +44,7 @@ const DreamFeed = () => {
                     {Object.keys(posts).map(id => {
                         return <FeedPost 
                                     key={id} 
+                                    postID={id}
                                     body={posts[id]["body"]}
                                     title={posts[id]["title"]}
                                     authorID={posts[id]["authorID"]}

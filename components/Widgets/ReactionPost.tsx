@@ -23,14 +23,14 @@ function ReactionPost() {
     return " *";
   }
   return (
-    <div className="w-[20vw] h-[25%] bg-transparent my-[1vw] border-x-2 border-t-2 text-white overflow-auto">
+    <div className="w-[20vw] h-[25%] bg-transparent my-[1vw] border-l-4 border-t-4 border-r-2 border-b-2 rounded-sm text-white overflow-auto">
       <div className="flex flex-col justify-start h-[13vw] grow-0 m-[0.5vw] gap-2">
         <div className="flex flex-row justify-start gap-1">
           <p className="text-white font-robotoRegular text-xl">Your Recent Post: </p>
           <p className="text-pink-400">{checkNewPost()}</p>
         </div>
         <div className="">
-          <p className="text-white line-clamp-3 font-robotoLight">
+          <p className="text-white text-md line-clamp-3 font-robotoLight">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam
             excepturi autem enim, quo, sit modi, doloremque consequuntur
             repellat cum aut similique ex. Ullam fuga molestiae ex repellat, id

@@ -6,24 +6,24 @@ type DreamResponseProps = {
     comments: PostComments;
     likes: PostLikes;
 }
-const DreamResponse = ( props: DreamResponseProps) => {
+const DreamResponse = (props: DreamResponseProps) => {
     //console.log(props.comments)
     const [users, setUsers] = useState<{
-        likeUsers: {[id: string]: User},
-        commentUsers: {[id: string]: {user: User, commentID: string}} 
-    }>({likeUsers: {}, commentUsers: {}});
+        likeUsers: { [id: string]: User },
+        commentUsers: { [id: string]: { user: User, commentID: string } }
+    }>({ likeUsers: {}, commentUsers: {} });
 
     useEffect(() => {
         const getLikeUser = async (id: string) => {
             const user = await getUserByID(id);
             setUsers(users => ({
-                likeUsers: {...users.likeUsers, [id]: user}, 
+                likeUsers: { ...users.likeUsers, [id]: user },
                 commentUsers: users.commentUsers,
             }));
         }
-        
+
         const likeIDs = Object.keys(props.likes);
-        for(let i = 0; i<likeIDs.length; i++){
+        for (let i = 0; i < likeIDs.length; i++) {
             getLikeUser(likeIDs[i]);
         }
 
@@ -31,16 +31,16 @@ const DreamResponse = ( props: DreamResponseProps) => {
             const user = await getUserByID(id);
             setUsers(users => ({
                 likeUsers: users.likeUsers,
-                commentUsers: {...users.commentUsers, [id]: {user: user, commentID: commentID}}
+                commentUsers: { ...users.commentUsers, [id]: { user: user, commentID: commentID } }
             }));
             //console.log("comment", commentUsers)
         }
 
         const commentIDs = Object.keys(props.comments);
-        for (let i = 0; i<commentIDs.length; i++){
+        for (let i = 0; i < commentIDs.length; i++) {
             getCommentUser(props.comments[commentIDs[i]]["userID"], commentIDs[i]);
         }
-    }, [])
+    }, [props.comments, props.likes])
 
     return (
         <div className="basis-4/10 flex flex-col border-[0.3vw] rounded-lg w-[50vw] p-[0.1vw]">
