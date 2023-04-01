@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { makePost } from "@services/postServices";
 import { RenderContext } from "@contexts/render";
 
@@ -7,7 +7,7 @@ interface newPostFormData {
   body: string;
 }
 
-const NewPost = ({ setNewPost }: any) => {
+const NewPost = ({ setNewPost, setLoading}: any) => {
   const renderState = useContext(RenderContext);
 
   const [formData, setFormData] = useState<newPostFormData>({
@@ -17,7 +17,7 @@ const NewPost = ({ setNewPost }: any) => {
   const [uploadedFile, setUploadedFile] = useState<File>();
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
-
+  const [numChars, setNumChars] = useState<number>(0);
   function handleClose() {
     setNewPost(false);
   }
@@ -27,6 +27,7 @@ const NewPost = ({ setNewPost }: any) => {
       setErrorMessage("Make sure both your post's title and body have text!");
       return;
     }
+    await setLoading(true);
     await makePost(
       formData.title,
       formData.body,
@@ -34,12 +35,19 @@ const NewPost = ({ setNewPost }: any) => {
       renderState.user.token
     );
     console.log("New post created successfully!");
+    await setLoading(false);
     setNewPost(false);
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
+  }
+
+  function handleTextAreaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
+    const { name, value } = event.target;
+    setNumChars(value.length);
+    setFormData((prevState) => ({ ...prevState, [name]: value}));
   }
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -77,10 +85,13 @@ const NewPost = ({ setNewPost }: any) => {
           <div className="flex flex-row justify-end">
             <textarea
               className="w-[98%] px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 text-left items-end h-[10vw] resize-none overflow-scroll-x"
-              id="feed"
-              name="feed"
+              id="body"
+              name="body"
+              maxLength={4000}
+              onChange={handleTextAreaChange}
             />
           </div>
+          <div className="text-sm text-slate-500">{numChars}/4000 characters use</div>
           <div className="flex flex-col gap-3 items-end w-full">
             {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
             <button
