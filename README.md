@@ -52,7 +52,6 @@
 | :-------- | :------- | :------------------------- |
 | `title` | `string` |  Title for the new post |
 | `body` | `string` |  Post body |
-| `thumbnail` | `string` |  Url of thumbnail |
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
