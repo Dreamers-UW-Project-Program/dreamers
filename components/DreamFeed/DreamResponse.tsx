@@ -10,8 +10,8 @@ const DreamResponse = (props: DreamResponseProps) => {
     //console.log(props.comments)
     const [users, setUsers] = useState<{
         likeUsers: { [id: string]: User },
-        commentUsers: { [id: string]: { user: User, commentID: string } }
-    }>({ likeUsers: {}, commentUsers: {} });
+        commentUsers: { [commentID: string]: User}
+    }>({ likeUsers: {}, commentUsers: {}});
 
     useEffect(() => {
         const getLikeUser = async (id: string) => {
@@ -26,22 +26,24 @@ const DreamResponse = (props: DreamResponseProps) => {
         for (let i = 0; i < likeIDs.length; i++) {
             getLikeUser(likeIDs[i]);
         }
+    }, [props.likes])
 
+    useEffect(() => {
         const getCommentUser = async (id: string, commentID: string) => {
             const user = await getUserByID(id);
             setUsers(users => ({
                 likeUsers: users.likeUsers,
-                commentUsers: { ...users.commentUsers, [id]: { user: user, commentID: commentID } }
+                commentUsers: {...users.commentUsers, [commentID]: user }
             }));
-            //console.log("comment", commentUsers)
+            // console.log(users.commentUsers)
         }
 
         const commentIDs = Object.keys(props.comments);
         for (let i = 0; i < commentIDs.length; i++) {
             getCommentUser(props.comments[commentIDs[i]]["userID"], commentIDs[i]);
         }
-    }, [props.comments, props.likes])
-
+    }, [props.comments])
+    
     return (
         <div className="basis-4/10 flex flex-col border-[0.3vw] rounded-lg w-[50vw] p-[0.1vw]">
             <div className="h-[5vw]">
@@ -55,9 +57,9 @@ const DreamResponse = (props: DreamResponseProps) => {
             <div>
                 <p className="border-b-[0.1vw] border-orange-500">💬</p>
                 <div className="text-white">
-                    {Object.keys(users.commentUsers).map(userID => {
-                        const user: User = users.commentUsers[userID]["user"]
-                        const comment: Comment = props.comments[users.commentUsers[userID]["commentID"]];
+                    {Object.keys(users.commentUsers).map(commentID => {
+                        const user: User = users.commentUsers[commentID];
+                        const comment: Comment = props.comments[commentID];
                         return <p>{user["username"]}: {comment["comment"]}</p>
                     })}
                 </div>
