@@ -7,7 +7,7 @@ interface newPostFormData {
   body: string;
 }
 
-const NewPost = ({ setNewPost, setLoading}: any) => {
+const NewPost = ({ setNewPost, setLoading }: any) => {
   const renderState = useContext(RenderContext);
 
   const [formData, setFormData] = useState<newPostFormData>({
@@ -47,7 +47,7 @@ const NewPost = ({ setNewPost, setLoading}: any) => {
   function handleTextAreaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const { name, value } = event.target;
     setNumChars(value.length);
-    setFormData((prevState) => ({ ...prevState, [name]: value}));
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
   }
 
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -91,9 +91,15 @@ const NewPost = ({ setNewPost, setLoading}: any) => {
               onChange={handleTextAreaChange}
             />
           </div>
-          <div className="text-sm text-slate-500">{numChars}/4000 characters use</div>
           <div className="flex flex-col gap-3 items-end w-full">
-            {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+            <div className="text-sm text-slate-500">
+              {numChars}/4000 characters use
+            </div>
+            {errorMessage && (
+              <div style={{ color: "red", fontWeight: "bold" }}>
+                {errorMessage}
+              </div>
+            )}
             <button
               type="submit"
               className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-xl w-[8vw]"
@@ -101,7 +107,7 @@ const NewPost = ({ setNewPost, setLoading}: any) => {
               Post!
             </button>
             <button
-              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-xl w-[8vw]"
+              className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-xl w-[8vw]"
               onClick={handleClose}
             >
               Cancel
