@@ -11,104 +11,92 @@ const NewPost = ({ setNewPost }: any) => {
   const renderState = useContext(RenderContext);
 
   const [formData, setFormData] = useState<newPostFormData>({
-    title: '',
-    body: '',
+    title: "",
+    body: "",
   });
   const [uploadedFile, setUploadedFile] = useState<File>();
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>('');
-
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   function handleClose() {
     setNewPost(false);
   }
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!formData.title || !formData.body){
+    if (!formData.title || !formData.body) {
       setErrorMessage("Make sure both your post's title and body have text!");
       return;
     }
     await makePost(
       formData.title,
       formData.body,
-      isUploaded ? uploadedFile : '',
+      isUploaded ? uploadedFile : "",
       renderState.user.token
-    )
+    );
     console.log("New post created successfully!");
     setNewPost(false);
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
-    setFormData(prevState => ({ ...prevState, [name]: value}));
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
   }
 
-  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>){
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (event.target.files) {
-        const file = event.target.files[0] as File;
-        setUploadedFile(file);
-        setIsUploaded(true);
+      const file = event.target.files[0] as File;
+      setUploadedFile(file);
+      setIsUploaded(true);
     } else {
-        setIsUploaded(false);
+      setIsUploaded(false);
     }
   }
 
-
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-gray-300 rounded-lg w-1/2">
-        <div className="p-4">
-          <h2 className="text-lg font-bold mb-2">Share your dream...</h2>
-          <form
-            className="flex flex-col justify-center mx-auto"
-            onSubmit={handleSubmit}
-          >
-            <label className="text-black" htmlFor="title">
+    <div className="fixed top-0 left-0 w-full h-full backdrop-brightness-100 bg-white/30 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg w-1/2 p-4">
+        <form
+          className="flex flex-col justify-center mx-auto"
+          onSubmit={handleSubmit}
+        >
+          <div className="flex flex-row justify-start items-center gap-3 stretch">
+            <label className="text-pink-500 font-bold" htmlFor="title">
               Title:
             </label>
             <input
-              className="px-3 py-2 rounded-lg mt-1 mb-4"
+              className="px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 w-[200%]"
               type="text"
               id="title"
               name="title"
               onChange={handleInputChange}
             />
-            <label className="text-black" htmlFor="body">
-              Your dream:
-            </label>
-            <input
-              className="px-3 py-2 rounded-lg mt-1 mb-4"
-              type="text"
-              id="body"
-              name="body"
-              onChange={handleInputChange}
+          </div>
+          <label className="text-pink-500 font-bold" htmlFor="feed">
+            Your dream:
+          </label>
+          <div className="flex flex-row justify-end">
+            <textarea
+              className="w-[98%] px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 text-left items-end h-[10vw] resize-none overflow-scroll-x"
+              id="feed"
+              name="feed"
             />
-            <label className="text-black" htmlFor="thumbnail">
-              Add a photo!
-            </label>
-            <input
-              className="px-3 py-2 rounded-lg mt-1 mb-4"
-              type="file"
-              id="thumbnail"
-              name="thumbnail"
-              accept="image/png, image/jpeg"
-              onChange={handleFileChange}
-            />
-            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+          </div>
+          <div className="flex flex-col gap-3 items-end w-full">
+            {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-[5vw]"
+              className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-xl w-[8vw]"
             >
               Post!
             </button>
-          </form>
-          <button
-            className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleClose}
-          >
-            Cancel
-          </button>
-        </div>
+            <button
+              className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-xl w-[8vw]"
+              onClick={handleClose}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

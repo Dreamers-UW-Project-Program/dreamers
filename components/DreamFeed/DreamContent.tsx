@@ -30,8 +30,8 @@ const DreamContent = (props: DreamContentProps) => {
         <img src={props.thumbnail} className="w-[15vw]" />
       </div>
       <div className="flex flex-row">
-        <p className="text-2xl" onClick={like}>💖</p>
-        <p className="text-2xl">💬</p>
+        <button className="text-2xl" onClick={like}>💖</button>
+        <button className="text-2xl">💬</button>
       </div>
     </div>
   );
