@@ -10,7 +10,7 @@ interface DreamContentProps extends Post {
 const DreamContent = (props: DreamContentProps) => {
   const [newComment, setNewComment] = useState<boolean>(false);
   const [numChars, setNumChars] = useState<number>(0);
-  const [formData, setFormData] = useState<string>("");
+  const [userComment, setUserComment] = useState<string>("");
   const renderState = useContext(RenderContext);
 
   async function like() {
@@ -26,6 +26,24 @@ const DreamContent = (props: DreamContentProps) => {
     console.log("like:", res);
   }
 
+  async function postComment(event: React.FormEvent<HTMLFormElement>) {
+    //event.preventDefault() // uncommenting this line creates error with the props or wtv
+    await commentPost(
+      props.postID,
+      renderState.user.userID,
+      renderState.user.token,
+      userComment,
+    )
+
+    props.setComments((comments: any) => ({
+      [renderState.user.userID]: comment, // users can post more than one comment
+      ...comments,
+    }));
+    setNewComment(false);
+    setUserComment("")
+    setNumChars(0);
+  }
+
   function comment() {
     setNewComment(true);
   }
@@ -37,13 +55,13 @@ const DreamContent = (props: DreamContentProps) => {
   function handleTextAreaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const { value } = event.target;
     setNumChars(value.length);
-    setFormData(value);
+    setUserComment(value);
   }
 
   function commentSection() {
     if (newComment) {
       return (
-        <form className="flex flex-col items-end gap-2">
+        <form className="flex flex-col items-end gap-2" onSubmit={postComment}>
           <textarea maxLength={150} onChange={handleTextAreaChange} className="resize-none text-white bg-transparent border-2 rounded-xl border-white w-[95%] h-[5vw] p-[0.5vw]"></textarea>
           <div className="text-sm text-slate-300">
               {numChars}/150 characters use
