@@ -31,7 +31,7 @@ const DreamFeed = () => {
     }, [page]);
 
     return (
-        <div className="rounded-[2rem] mt-[2vw] w-[80%] h-[100vw] bg-transparent border-2 border-white z-30">
+        <div className="flex flex-col white-box-shadow rounded-[2rem] mt-[2vw] w-[80%] bg-transparent border-2 border-white z-30">
             <p className="font-semibold text-white font-montserratBold text-4xl m-7 border-b-[1vw]">Your Friends Dreamed of......</p>
             <InfiniteScroll
                 pageStart={page}

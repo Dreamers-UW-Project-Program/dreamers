@@ -2,20 +2,22 @@ import { Post } from "@customTypes/globals";
 
 const DreamContent = (props: Post) => {
   return (
-    <div className="basis-6/10 flex flex-col gap-y-2 text-white border-[0.5vw] px-[4vw] py-[0.5vw] rounded-r-3xl font-serif">
-      <div className="flex justify-between">
-        <div className="text-lg ">{props.title}</div>
-        <div>{props.date}</div>
+      <div className="flex flex-col gap-y-2 text-white border-[0.5vw] px-[2.5vw] py-[1vw] rounded-r-3xl">
+        <div className="flex justify-between">
+          <div className="text-xl font-robotoRegular white-text-shadow">{props.title}</div>
+          <div>{props.date}</div>
+        </div>
+        <div className="flex flex-row font-robotoLight">
+          <div className="">
+            <p>{props.body}</p>
+          </div>
+          <img src={props.thumbnail} className="w-[15vw] h-[15vw]" />
+        </div>
+        <div className="flex flex-row basis-1/5 w-[10%]">
+          <p className="text-2xl">💖</p>
+          <p className="text-2xl">💬</p>
+        </div>
       </div>
-      <div className="flex flex-row gap-2">
-        {props.body}
-        <img src={props.thumbnail} className="w-[100%]" />
-      </div>
-      <div className="flex flex-row">
-        <p className="text-2xl">💖</p>
-        <p className="text-2xl">💬</p>
-      </div>
-    </div>
   );
 };
 

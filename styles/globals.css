@@ -68,7 +68,9 @@
 .sunset-hr-shadow{
   box-shadow: 0 0 10px #fda4af;
 }
-
+.white-text-shadow{
+  text-shadow: 0px 0px 9px #fff;
+}
 
 /*************************************************** FONTS **************************************************/
 
