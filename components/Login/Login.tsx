@@ -32,7 +32,7 @@ function Login() {
             renderState.setLogIn(false);
             renderState.setMainDisplay(true);
         } else {
-            setErrorMessage('Incorrect username or password');
+            setErrorMessage('Incorrect username or password.');
         }
     }
 
@@ -42,30 +42,42 @@ function Login() {
     }
 
     return (
-        <form className="flex flex-col justify-center items-center mx-auto" onSubmit={handleSubmit}>
-            <label className="text-white" htmlFor="username">Username:</label>
-            <input
-                className="px-3 py-2 rounded-lg mt-1 mb-4"
-                type="text"
-                id="username"
-                name="username"
-                value={email}
-                onChange={handleUsernameChange}
-            />
-            <label className="text-white" htmlFor="password">Password:</label>
-            <input
-                className="px-3 py-2 rounded-lg mt-1 mb-4"
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-            />
-            <button className="text-black bg-white mt-5 py-2 px-7 rounded-lg icon-shadow hover:scale-105" type="submit">Log In</button>
-            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
-
-            <button className="text-black bg-white mt-5 py-2 px-7 rounded-lg icon-shadow hover:scale-105" onClick={handleRegister}>Register</button>
-        </form>
+        <div className="flex h-[38vw] w-[33vw] rounded-lg bg-white glassmorphism m-auto">
+            <form className="flex flex-col pt-[3.5vw] items-center mx-auto" onSubmit={handleSubmit}>
+                <label className="text-rose-50 font-poiretOne text-[3.5vw] tracking-wide mb-[3vw]" htmlFor="username">Dreamscape</label>
+                <label className="text-rose-50 font-quicksandLight text-md tracking-wide" htmlFor="username">Username :</label>
+                <input
+                    className="px-4 py-2 rounded-lg mb-6 input-glassmorphism text-zinc-700"
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={email}
+                    onChange={handleUsernameChange}
+                />
+                <label className="text-rose-50 font-quicksandLight text-md tracking-wide" htmlFor="password">Password :</label>
+                <input
+                    className="px-4 py-2 rounded-lg mt-1 mb-6 input-glassmorphism text-zinc-700"
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                />
+                <button 
+                    className="text-white bg-gradient-to-r from-rose-400 to-orange-300 mt-4 py-2 px-7 rounded-lg login-icon-shadow hover:scale-105 
+                        font-quicksandLight text-md"
+                    type="submit">
+                        Log In
+                </button>
+                {errorMessage && <div className="font-quicksandRegular pt-2 text-rose-200">{errorMessage}</div>}
+                <button 
+                    className="text-rose-100 bg-gradient-to-r from-fuchsia-400 to-violet-500 mt-9 py-2 px-7 rounded-lg register-icon-shadow hover:scale-105 
+                        font-quicksandLight" 
+                    onClick={handleRegister}>
+                        Register
+                </button>
+            </form>
+        </div>
     );
 }
 
