@@ -23,7 +23,7 @@ function ReactionPost() {
     return " *";
   }
   return (
-    <div className="w-[20vw] h-[25%] bg-transparent my-[1vw] border-l-4 border-t-4 border-r-2 border-b-2 white-box-shadow 
+    <div className="hidden w-[20vw] h-[25%] bg-transparent my-[1vw] border-l-4 border-t-4 border-r-2 border-b-2 white-box-shadow 
       rounded-sm text-white overflow-auto">
       <div className="flex flex-col justify-start h-[13vw] grow-0 m-[0.5vw] gap-2">
         <div className="flex flex-row justify-start gap-1">
