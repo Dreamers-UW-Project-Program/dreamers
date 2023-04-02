@@ -42,12 +42,15 @@ const DreamFeed = () => {
             >
                 <div className="flex flex-col gap-[1vw]">
                     {Object.keys(posts).map(id => {
+                        const args = posts[id]["date"].split(' ');
+                        const date = args[0] + ' ' + args[1] + ' ' + args[2] + ', ' + args[3]
                         return <FeedPost 
                                     key={id} 
+                                    postID={id}
                                     body={posts[id]["body"]}
                                     title={posts[id]["title"]}
                                     authorID={posts[id]["authorID"]}
-                                    date={posts[id]["date"]}
+                                    date={date}
                                     thumbnail={posts[id]["thumbnail"]}
                                     comments={posts[id]["comments"] ?? {}}
                                     likes={posts[id]["likes"] ?? {}}
