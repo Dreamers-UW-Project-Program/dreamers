@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { database as db } from "../../firebase/firebase.js"
-import { ref, push, set, get } from "firebase/database"
+import { ref, push, set, get, query, limitToFirst, orderByKey, startAt, startAfter } from "firebase/database"
 import { getToken, getUserIDByToken } from "../../firebase/utils/loginTokenUtils.js"
 import { generateBase64 } from "../../services/imageServices.js"
 import { uploadPostThumbnailFromBase64 } from "@firebase/utils/uploadUtils";
@@ -34,10 +34,10 @@ async function usersPostListHandler(authorID: string, postKey: string) {
 
 const postHandler = nc<NextApiRequest, NextApiResponse>({
     onError(error, req, res) {
-        res.status(501).json({error: `Sorry something happened! ${error.message}`});
+        res.status(501).json({ error: `Sorry something happened! ${error.message}` });
     },
     onNoMatch(req, res) {
-        res.status(405).json({ error: `Method "${req.method}" not allowed!`});
+        res.status(405).json({ error: `Method "${req.method}" not allowed!` });
     },
 })
 
@@ -45,14 +45,18 @@ postHandler.use(multer().any());
 
 postHandler.get(async (req, res) => {
     try {
-        const postListRef = ref(db, '/postList');
+
+        const { startKey, num } = req.query;
+        let postListRef = query(ref(db, '/postList'), startAt(String(startKey)), limitToFirst(Number(num)), orderByKey());
         const snapshot = await get(postListRef);
+        console.log(snapshot.val());
 
         if (snapshot.exists()) {
             return res.status(200).json(snapshot.val());
         }
         return res.status(404).json({ message: "No Post Found" });
-    } catch {
+    } catch (err) {
+        console.log(err);
         return res.status(404).json({ message: "No Post Found" });
     }
 })
@@ -73,8 +77,8 @@ postHandler.post(async (req, res) => {
         const userID = await getUserIDByToken(token);
         let thumbnail;
 
-        if (req.files && req.files.length>0){
-            thumbnail =  req.files[0].buffer.toString('base64');
+        if (req.files && req.files.length > 0) {
+            thumbnail = req.files[0].buffer.toString('base64');
         } else {
             thumbnail = await generateBase64(body, "1024x1024");
             // thumbnail now in base64 if successful. Else null.
@@ -92,8 +96,8 @@ postHandler.post(async (req, res) => {
 
 export const config = {
     api: {
-      bodyParser: false,
+        bodyParser: false,
     },
-  }
+}
 
 export default postHandler;

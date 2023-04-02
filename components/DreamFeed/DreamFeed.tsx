@@ -1,57 +1,69 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import FeedPost from "./FeedPost";
 import { Post } from "@customTypes/globals";
-import InfiniteScroll from 'react-infinite-scroller';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const DreamFeed = () => {
-    const [posts, setPosts] = useState<{[id: string]: Post}>({});
-    const [page, setPage] = useState<number>(1);
+    const [posts, setPosts] = useState({});
+    // const [lastKey, setLastKey] = useState("");
+    const [hasMore, setHasMore] = useState(true);
 
-    const loadMore = async (pageNumber: number) => {
-        const fetchedPosts = await fetch(`/api/posts?page=${pageNumber}`, {
+    let lastKey = "";
+
+    const loadMore = async () => {
+        const fetchedPosts = await fetch(`/api/posts?startKey="${lastKey}"&num=5`, {
             method: "GET",
         }).then(response => {
+            if (response.status === 404) {
+                return null;
+            }
             return response.json();
         });
-        setPosts(prevPosts => ({ ...prevPosts, ...fetchedPosts }));
-        setPage(pageNumber + 1);
-    };
-    
-    useEffect(() => {
-        const getPosts = async () => {
-            const fetchedPosts = await fetch(`/api/posts?page=${page}`, {
-                method: "GET",
-            }).then(response => {
-                return response.json();
-            } )
-            setPosts(fetchedPosts);
-            //console.log("posts", posts);
+
+        if (Object.keys(fetchedPosts).length <= 1) {
+            setHasMore(false);
+            console.log("Page False");
+            return;
         }
-        getPosts();
-    }, [page]);
+        
+        setPosts(prevPosts => ({ ...prevPosts, ...fetchedPosts }));
+        console.log("Loaded Page");
+
+
+        console.log("keys", Object.keys(fetchedPosts));
+        // console.log("last key:", Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1])
+        const key = String(Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1]);
+        console.log("key:", key);
+        // await setLastKey("no longer empty string mf");
+        lastKey = key;
+        console.log("lastKey:", lastKey);
+        console.log(Object.keys(posts).length);
+    };
 
     return (
         <div className="rounded-[2rem] mt-[2vw] w-[80%] h-[100vw] bg-transparent border-2 border-white z-30">
             <p className="font-semibold text-white font-montserratBold text-4xl m-7 border-b-[1vw]">Your Friends Dreamed of......</p>
             <InfiniteScroll
-                pageStart={page}
-                loadMore={loadMore}
-                hasMore={true}
+                dataLength={Object.keys(posts).length}
+                next={loadMore}
+                // height={400}
+                // scrollThreshold={0.2}
+                hasMore={hasMore}
                 loader={<div className="loader" key={0}>Loading ...</div>}
-                useWindow={true}
             >
                 <div className="flex flex-col gap-[1vw]">
                     {Object.keys(posts).map(id => {
                         const args = posts[id]["date"].split(' ');
                         const date = args[0] + ' ' + args[1] + ' ' + args[2] + ', ' + args[3]
                         return <FeedPost 
-                                    key={id} 
+                                    key={id}
                                     postID={id}
                                     body={posts[id]["body"]}
                                     title={posts[id]["title"]}
                                     authorID={posts[id]["authorID"]}
                                     date={date}
-                                    thumbnail={posts[id]["thumbnail"]}
+                                    // thumbnail={posts[id]["thumbnail"]}
+                                    thumbnail={"https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"}
                                     comments={posts[id]["comments"] ?? {}}
                                     likes={posts[id]["likes"] ?? {}}
                                 />

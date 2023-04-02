@@ -15,7 +15,7 @@ function AvatarWidget() {
         const res = await getUserByID(
           id ?? process.env.DEFAULT_USER_ID ?? ""
         );
-        console.log(userName);
+        // console.log(userName);
         setAvatar(res.avatar);
       } catch (e) {
         console.log(e);
@@ -29,7 +29,7 @@ function AvatarWidget() {
         const res = await getUserByID(
           id ?? process.env.DEFAULT_USER_ID ?? ""
         );
-        console.log(userName);
+        // console.log(userName);
         setUserName(res.username);
       } catch (e) {
         console.log(e);

@@ -19,7 +19,7 @@ const FriendsList = () => {
         const res = await getFriendsListByID(
           renderState.user.userID ?? process.env.DEFAULT_USER_ID ?? ""
         );
-        console.log(friendsList);
+        // console.log(friendsList);
         setFriendsList(res);
       } catch (e) {
         console.log(e);
@@ -36,7 +36,7 @@ const FriendsList = () => {
           ...friends,
           [friend]: currFriend,
         }));
-        console.log(friends);
+        // console.log(friends);
       });
     } catch (e) {
       console.log(e);
@@ -47,7 +47,7 @@ const FriendsList = () => {
     <div className="mx-4 mb-6 h-full overflow-hidden font-robotoLight">
       <div className="flex flex-col items-start text-sm overflow-auto h-full scroll-smooth">
         {Object.keys(friends ?? {}).map((friend) => {
-          console.log(friend);
+          // console.log(friend);
           return <div>{friends[friend]["username"]}</div>;
         })}
       </div>
