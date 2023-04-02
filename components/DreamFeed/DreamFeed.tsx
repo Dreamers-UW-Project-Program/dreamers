@@ -41,15 +41,15 @@ const DreamFeed = () => {
     };
 
     return (
-        <div className="flex flex-col white-box-shadow rounded-[2rem] mt-[2vw] w-[80%] bg-transparent border-2 border-white z-30">
-            <p className="font-semibold text-white font-montserratBold text-4xl m-7 border-b-[1vw]">Your Friends Dreamed of......</p>
+        <div className="flex flex-col white-box-shadow rounded-[2rem] mt-[2vw] w-[80%] bg-transparent border-[1px] border-white z-30">
+            <p className="font-semibold text-white font-quicksandBold white-text-shadow text-4xl m-7">Your Friends Dreamed of...</p>
             <InfiniteScroll
                 dataLength={Object.keys(posts).length}
                 next={loadMore}
                 // height={400}
                 // scrollThreshold={0.2}
                 hasMore={hasMore}
-                loader={<div className="loader" key={0}>Loading ...</div>}
+                loader={<div className="loader text-white font-quicksandLight text-2xl text-center pb-4" key={0}>Loading ...</div>}
             >
                 <div className="flex flex-col gap-[1vw]">
                     {Object.keys(posts).map(id => {

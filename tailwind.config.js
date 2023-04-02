@@ -17,8 +17,22 @@ module.exports = {
         latoRegular: ["Lato Regular", "sans-serif"],
         robotoLight: ["Roboto Light", "sans-serif"],
         robotoRegular: ["Roboto Regular", "sans-serif"], 
+        quicksandLight: ["Quicksand Light", "sans-serif"],
+        quicksandRegular: ["Quicksand Regular", "sans-serif"],
+        quicksandBold: ["Quicksand Bold", "sans-serif"],
+        rubikMoonrocks: ["RubikMoonrocks Regular", "sans-serif"],
+        poiretOne: ["PoiretOne Regular", "sans-serif"],
       },
-    }, 
+    },
+    animation: {
+      'spin-slow': 'animate-spin-slow 3s linear infinite', // Define a new animation called "spin-slow"
+    },
+    keyframes: {
+      'animate-spin-slow': {
+        '0%': { transform: 'rotate(0deg)' },
+        '100%': { transform: 'rotate(360deg)' },
+      },
+    },
     screens: {
       "2xs": "360px",
       iPhone12: "390px",
@@ -40,5 +54,9 @@ module.exports = {
   plugins: [
     require("tailwindcss-gradients"),
     require("@tailwindcss/line-clamp"),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
   ],
 };
