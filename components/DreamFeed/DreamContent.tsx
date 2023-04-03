@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { Post } from "@customTypes/globals";
+import { Post, User } from "@customTypes/globals";
 import { likePost, commentPost } from "../../services/postServices";
 import { RenderContext } from "@contexts/render";
-
+import { getUserByID } from "@firebase/utils/userUtils";
+import { addFriend } from "@services/friendServices";
 interface DreamContentProps extends Post {
   setLikes: any;
   setComments: any;
@@ -11,8 +12,19 @@ const DreamContent = (props: DreamContentProps) => {
   const [newComment, setNewComment] = useState<boolean>(false);
   const [numChars, setNumChars] = useState<number>(0);
   const [userComment, setUserComment] = useState<string>("");
-  const renderState = useContext(RenderContext);
+  const [author, setAuthor] = useState<User>();
 
+  const renderState = useContext(RenderContext);
+  
+  useEffect(() => {
+    async function getUser() {
+      const user = await getUserByID(props.authorID);
+      setAuthor(user);
+    }
+
+    getUser();
+  }, [])
+  
   async function like() {
     const res = await likePost(
       props.postID,
@@ -77,13 +89,21 @@ const DreamContent = (props: DreamContentProps) => {
 
   return (
     <div className="basis-6/10 flex flex-col gap-y-2 text-white border-[4px] px-[4vw] py-[0.5vw] rounded-r-3xl font-quicksandLight">
-      <div className="flex justify-between pb-5">
+      <div className="flex justify-evenly pb-5">
         <div className="mt-4 text-3xl font-poiretOne tracking-wider">{props.title}</div>
         <div className="mt-5 text-md font-quicksandRegular">{props.date}</div>
+        { author ?
+          <>
+            <div className="mt-5 text-md font-quicksandRegular">{author.username}</div>
+            <img className="w-[10%] rounded-full border-white border-2 lighter-sunset-box-shadow xl:mr-8" src={author.avatar}/>
+            <button onClick={async () => await addFriend(renderState.user.userID, props.authorID, renderState.user.token)}>Follow</button>
+          </>
+          : ""
+        }
       </div>
       <div className="flex flex-row gap-2">
         {props.body}
-        <img src={props.thumbnail} className="w-[15vw] rounded-md border-white border-2" />
+        <img src={"https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"} className="w-[15vw] rounded-md border-white border-2" />
       </div>
       <div className="flex flex-row">
         <button className="text-2xl" onClick={like}>
