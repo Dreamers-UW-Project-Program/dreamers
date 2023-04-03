@@ -45,7 +45,7 @@ function Login() {
         <div className="flex h-[38vw] w-[33vw] rounded-lg bg-white glassmorphism m-auto">
             <form className="flex flex-col pt-[3.5vw] items-center mx-auto" onSubmit={handleSubmit}>
                 <label className="text-rose-50 font-poiretOne text-[3.5vw] tracking-wide mb-[3vw]" htmlFor="username">Dreamscape</label>
-                <label className="text-rose-50 font-quicksandLight text-md tracking-wide" htmlFor="username">Username :</label>
+                <label className="text-rose-50 font-quicksandLight text-md tracking-wide" htmlFor="username">Email :</label>
                 <input
                     className="px-4 py-2 rounded-lg mb-6 input-glassmorphism text-zinc-700"
                     type="text"

@@ -37,7 +37,7 @@ function Greeting() {
 
     
     return (
-        <h2 className="font-quicksandBold text-[4vw] text-white white-text-shadow">{Greet() + " " + userName + "!"}</h2>
+        <h2 className="font-quicksandBold mt-[5.5vw] text-[4vw] text-white white-text-shadow">{Greet() + " " + userName + "!"}</h2>
     );
 }
 

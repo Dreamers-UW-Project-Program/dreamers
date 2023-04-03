@@ -61,36 +61,32 @@ const NewPost = ({ setNewPost, setLoading }: any) => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full backdrop-brightness-100 bg-white/30 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg w-1/2 p-4">
+    <div className="fixed top-0 left-0 w-full h-full backdrop-brightness-100 glassmorphism flex items-center justify-center z-50">
+      <div className="bg-[#ffffffcb] rounded-lg w-1/2 pt-8 px-[3vw] pb-[2vw]">
         <form
           className="flex flex-col justify-center mx-auto"
           onSubmit={handleSubmit}
         >
-          <div className="flex flex-row justify-start items-center gap-3 stretch">
-            <label className="text-pink-500 font-bold" htmlFor="title">
+            <label className="text-pink-400 font-quicksandRegular text-2xl" htmlFor="title">
               Title:
             </label>
             <input
-              className="px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 w-[200%]"
+              className="px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 w-[75%]"
               type="text"
               id="title"
               name="title"
               onChange={handleInputChange}
             />
-          </div>
-          <label className="text-pink-500 font-bold" htmlFor="feed">
+          <label className="text-pink-400 font-quicksandRegular text-2xl" htmlFor="feed">
             Your dream:
           </label>
-          <div className="flex flex-row justify-end">
-            <textarea
-              className="w-[98%] px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 text-left items-end h-[10vw] resize-none overflow-scroll-x"
-              id="body"
-              name="body"
-              maxLength={4000}
-              onChange={handleTextAreaChange}
-            />
-          </div>
+          <textarea
+            className=" px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 text-left items-end h-[10vw] resize-none overflow-scroll-x"
+            id="body"
+            name="body"
+            maxLength={4000}
+            onChange={handleTextAreaChange}
+          />
           <div className="flex flex-col gap-3 items-end w-full">
             <div className="text-sm text-slate-500">
               {numChars}/4000 characters use

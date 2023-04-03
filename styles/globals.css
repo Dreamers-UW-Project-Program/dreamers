@@ -42,6 +42,9 @@
 .filter-grey{
   filter: invert(89%) sepia(0%) saturate(12%) hue-rotate(201deg) brightness(88%) contrast(84%);
 }
+.filter-baby-orange{
+  filter: invert(88%) sepia(7%) saturate(1980%) hue-rotate(326deg) brightness(104%) contrast(91%);
+}
 
 
 
@@ -62,13 +65,13 @@
   -webkit-backdrop-filter: blur( 5px );
 }
 .widget-glassmorphism{
-  background: #f7e9d2e0;
+  background: #f7e9d212;
   box-shadow: 3px 3px 10px 0 #ffffff;
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 5px );
   border-radius: 10px;
+  border: 1px rgba(255, 255, 255, 0.251);
 }
-
 .icon{
   transition: 1s;
 }
@@ -106,7 +109,13 @@
   box-shadow: 0 0 14px #fff;
 }
 .sunset-box-shadow{
-  box-shadow: 0 0 20px #fda4af;
+  box-shadow: 0 0 20px 3px #ffdbdfa4;
+}
+.lighter-sunset-box-shadow{
+  box-shadow: 0 0 20px #ffc6cda4;
+}
+.orange-box-shadow{
+  box-shadow: 0 0 24px 1px #ffffffb0;
 }
 .sunset-hr-shadow{
   box-shadow: 0 0 10px #fda4af;
@@ -114,11 +123,17 @@
 .white-text-shadow{
   text-shadow: 0px 0px 5px #fff;
 }
+.less-white-text-shadow{
+  text-shadow: 0px 0px 3px #fff;
+}
 .sunset-text-shadow{
   text-shadow: 0px 0px 9px #fda4af;
 }
 .file-input {
   display: none;
+}
+.transition{
+  transition: 1s;
 }
 /*************************************************** FONTS **************************************************/
 
@@ -173,6 +188,10 @@
 @font-face{
   font-family: "PoiretOne Regular";
   src: url('../public/fonts/PoiretOne-Regular.ttf');
+}
+@font-face{
+  font-family: "Italiana";
+  src: url('../public/fonts/Italiana-Regular.ttf');
 }
 .login-font-spacing{
   letter-spacing: 0.5px;

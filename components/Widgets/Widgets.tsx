@@ -7,7 +7,7 @@ import ReactionPost from "./ReactionPost";
 
 const Widgets = () => {
   return (
-    <div className="fixed top-[35%] left-[14%] fixed-center z-[999]">
+    <div className="fixed top-[40%] left-[14%] fixed-center z-[999]">
       <div className="flex flex-col justify-center items-center h-screen">
         <AvatarWidget />
         <Widget inner={FriendsList()} />
