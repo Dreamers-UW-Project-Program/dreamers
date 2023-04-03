@@ -96,7 +96,7 @@
 
 #### Get friend list for user
 ```
-  GET /api/posts/${id}
+  GET /api/friends/${id}
 ```
 | Query Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -109,7 +109,7 @@
 
 #### Post/Delete friend for user
 ```
-  POST/DELETE /api/posts/${id}
+  POST/DELETE /api/friends/${id}
 ```
 | Query Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
