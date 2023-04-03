@@ -31,7 +31,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #fdba74; 
+  background: #fac184; 
 }
 
 /**************************************************** SVG ******************************************************/
@@ -43,7 +43,7 @@
   filter: invert(89%) sepia(0%) saturate(12%) hue-rotate(201deg) brightness(88%) contrast(84%);
 }
 .filter-baby-orange{
-  filter: invert(88%) sepia(7%) saturate(1980%) hue-rotate(326deg) brightness(104%) contrast(91%);
+  filter: invert(88%) sepia(20%) saturate(1215%) hue-rotate(319deg) brightness(97%) contrast(103%);
 }
 
 
@@ -92,7 +92,7 @@
 }
 .login-icon-shadow:hover{
   transition: 1s;
-  filter: drop-shadow(0 0 10px #fac58c);
+  filter: drop-shadow(0 0 10px#fac58c);
   cursor: pointer;
   animation: ease-in-out;
 }
@@ -107,6 +107,9 @@
 }
 .white-box-shadow{
   box-shadow: 0 0 14px #fff;
+}
+.large-sunset-box-shadow{
+  box-shadow: 0 0 40px 3px #fdb9c0d3;
 }
 .sunset-box-shadow{
   box-shadow: 0 0 20px 3px #ffdbdfa4;
@@ -132,7 +135,7 @@
 .file-input {
   display: none;
 }
-.transition{
+.transition-1s{
   transition: 1s;
 }
 /*************************************************** FONTS **************************************************/
@@ -176,6 +179,10 @@
 @font-face{
   font-family: "Quicksand Regular";
   src: url('../public/fonts/Quicksand-Regular.ttf');
+}
+@font-face{
+  font-family: "Quicksand Medium";
+  src: url('../public/fonts/Quicksand-Medium.ttf');
 }
 @font-face{
   font-family: "Quicksand Bold";
