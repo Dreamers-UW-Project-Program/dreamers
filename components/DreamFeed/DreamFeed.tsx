@@ -5,68 +5,38 @@ import InfiniteScroll from 'react-infinite-scroller';
 
 const DreamFeed = () => {
     const [posts, setPosts] = useState<{[id: string]: Post}>({});
-    // const [lastKey, setLastKey] = useState("");
+    const [lastKey, setLastKey] = useState(" ");
     const [hasMore, setHasMore] = useState(true);
-    let loading = false;
-    // let lastKey = "";
 
-    // const loadMore = async () => {
-    //     const fetchedPosts = await fetch(`/api/posts?startKey="${lastKey}"&num=5`, {
-    //         method: "GET",
-    //     }).then(response => {
-    //         if (response.status === 404) {
-    //             return null;
-    //         }
-    //         return response.json();
-    //     });
+    const loadMore = async () => {
 
-    //     if (Object.keys(fetchedPosts).length <= 1) {
-    //         setHasMore(false);
-    //         console.log("Page False");
-    //         return;
-    //     }
-        
-    //     setPosts(prevPosts => ({ ...prevPosts, ...fetchedPosts }));
-    //     console.log("Loaded Page");
-
-
-    //     console.log("keys", Object.keys(fetchedPosts));
-    //     // console.log("last key:", Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1])
-    //     const key = String(Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1]);
-    //     console.log("key:", key);
-    //     // await setLastKey("no longer empty string mf");
-    //     lastKey = key;
-    //     console.log("lastKey:", lastKey);
-    //     console.log(Object.keys(posts).length);
-    // };
-
-    const loadMore = () => {
-        loading = !loading;
-    }
-
-    useEffect(() => {
-        const getPosts = async () => {
-            const fetchedPosts = await fetch(`/api/posts?startKey=""&num=5`, {
-                method: "GET",
-            }).then(response => {
-                if (response.status === 404) {
-                    return null;
-                }
-                return response.json();
-            });
-    
-            if (fetchedPosts) {
-                setPosts(prevPosts => ({ ...prevPosts, ...fetchedPosts }));
+        const fetchedPosts: {[id: string]: Post} = await fetch(`/api/posts?startKey=${lastKey}&num=5`, {
+            method: "GET",
+        }).then(response => {
+            if (response.status === 404) {
+                return null;
             }
-    
-            console.log(posts);
-    
-            setHasMore(false);
-            console.log("page loaded. hasmore:", hasMore);
-        }
+            return response.json();
+        });
 
-        getPosts();
-    }, []);
+        if (Object.keys(fetchedPosts).length <= 1) {
+            setHasMore(false);
+            console.log("Page False");
+            return;
+        }
+        
+        setPosts(prevPosts => ({ ...prevPosts, ...fetchedPosts }));
+        console.log("Loaded Page");
+
+        console.log("keys", Object.keys(fetchedPosts));
+        // console.log("last key:", Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1])
+        const key = Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1];
+        console.log("key:", key);
+        // await setLastKey("no longer empty string mf");
+        setLastKey(key);
+        console.log("lastKey:", lastKey);
+        console.log(Object.keys(posts).length);
+    };
 
     return (
         <div className="flex flex-col white-box-shadow rounded-[2rem] mt-[2vw] w-[80%] bg-transparent border-[1px] border-white z-30">
@@ -74,7 +44,7 @@ const DreamFeed = () => {
             <InfiniteScroll
                 pageStart={0}
                 loadMore={loadMore}
-                hasMore={false}
+                hasMore={hasMore}
                 loader={<div className="loader" key={0}>Loading ...</div>}
             >
                 <div className="flex flex-col gap-[1vw]">
