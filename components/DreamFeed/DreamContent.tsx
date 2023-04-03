@@ -61,7 +61,7 @@ const DreamContent = (props: DreamContentProps) => {
   function commentSection() {
     if (newComment) {
       return (
-        <form className="flex flex-col items-end gap-2" onSubmit={postComment}>
+        <form className="transition-1s flex flex-col items-end gap-2" onSubmit={postComment}>
           <textarea maxLength={150} onChange={handleTextAreaChange} className="resize-none text-white bg-transparent border-2 rounded-xl border-white w-[95%] h-[5vw] p-[0.5vw]"></textarea>
           <div className="text-sm text-slate-300">
               {numChars}/150 characters use
