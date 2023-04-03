@@ -52,6 +52,8 @@
 | :-------- | :------- | :------------------------- |
 | `title` | `string` |  Title for the new post |
 | `body` | `string` |  Post body |
+| `startKey` | `string` | Starting post |
+| `num` | `integer` | Number of posts to fetch from startKey |
 
 | Header | Type | Description
 | :-------- | :------- | :------------------------- |
