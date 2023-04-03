@@ -49,7 +49,7 @@ postHandler.get(async (req, res) => {
         const { startKey, num } = req.query;
         let postListRef = query(ref(db, '/postList'), startAt(String(startKey)), limitToFirst(Number(num)), orderByKey());
         const snapshot = await get(postListRef);
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
 
         if (snapshot.exists()) {
             return res.status(200).json(snapshot.val());

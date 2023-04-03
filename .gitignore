@@ -25,6 +25,7 @@
 /pages/api/register_with_url.ts
 /pages/api/temporary_post.ts
 /jsons/init.json
+/jsons/v2.json
 
 # debug
 npm-debug.log*
