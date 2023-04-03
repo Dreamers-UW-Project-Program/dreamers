@@ -62,48 +62,48 @@ const NewPost = ({ setNewPost, setLoading }: any) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full backdrop-brightness-100 glassmorphism flex items-center justify-center z-50">
-      <div className="bg-[#ffffffcb] rounded-lg w-1/2 pt-8 px-[3vw] pb-[2vw]">
+      <div className="bg-[#ffffffb7] rounded-lg w-1/2 pt-8 px-[3vw] pb-[2vw] large-sunset-box-shadow">
         <form
           className="flex flex-col justify-center mx-auto"
           onSubmit={handleSubmit}
         >
-            <label className="text-pink-400 font-quicksandRegular text-2xl" htmlFor="title">
+            <label className="text-pink-500 font-quicksandMedium text-2xl sunset-text-shadow" htmlFor="title">
               Title:
             </label>
             <input
-              className="px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 w-[75%]"
+              className="px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 w-[75%] font-quicksandRegular "
               type="text"
               id="title"
               name="title"
               onChange={handleInputChange}
             />
-          <label className="text-pink-400 font-quicksandRegular text-2xl" htmlFor="feed">
+          <label className="text-pink-500 font-quicksandMedium text-2xl sunset-text-shadow" htmlFor="feed">
             Your dream:
           </label>
           <textarea
-            className=" px-3 py-2 rounded-lg mt-1 mb-4 bg-gray-200 text-left items-end h-[10vw] resize-none overflow-scroll-x"
+            className="font-quicksandRegular px-3 py-2 rounded-lg my-1 bg-gray-200 text-left items-end h-[10vw] resize-none overflow-scroll-x"
             id="body"
             name="body"
             maxLength={4000}
             onChange={handleTextAreaChange}
           />
           <div className="flex flex-col gap-3 items-end w-full">
-            <div className="text-sm text-slate-500">
-              {numChars}/4000 characters use
+            <div className="font-quicksandRegular text-sm text-zinc-800 mb-4">
+              {numChars}/4000 characters
             </div>
             {errorMessage && (
-              <div style={{ color: "red", fontWeight: "bold" }}>
+              <div className="font-quicksandRegular pt-2 text-rose-200">
                 {errorMessage}
               </div>
             )}
             <button
               type="submit"
-              className="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-xl w-[8vw]"
+              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-bold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
             >
               Post!
             </button>
             <button
-              className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-xl w-[8vw]"
+              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-bold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
               onClick={handleClose}
             >
               Cancel

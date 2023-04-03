@@ -108,6 +108,9 @@
 .white-box-shadow{
   box-shadow: 0 0 14px #fff;
 }
+.large-sunset-box-shadow{
+  box-shadow: 0 0 40px 3px #fdb9c0d3;
+}
 .sunset-box-shadow{
   box-shadow: 0 0 20px 3px #ffdbdfa4;
 }
@@ -176,6 +179,10 @@
 @font-face{
   font-family: "Quicksand Regular";
   src: url('../public/fonts/Quicksand-Regular.ttf');
+}
+@font-face{
+  font-family: "Quicksand Medium";
+  src: url('../public/fonts/Quicksand-Medium.ttf');
 }
 @font-face{
   font-family: "Quicksand Bold";

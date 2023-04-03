@@ -19,6 +19,7 @@ module.exports = {
         robotoRegular: ["Roboto Regular", "sans-serif"], 
         quicksandLight: ["Quicksand Light", "sans-serif"],
         quicksandRegular: ["Quicksand Regular", "sans-serif"],
+        quicksandMedium: ["Quicksand Medium", "sans-serif"],
         quicksandBold: ["Quicksand Bold", "sans-serif"],
         rubikMoonrocks: ["RubikMoonrocks Regular", "sans-serif"],
         poiretOne: ["PoiretOne Regular", "sans-serif"],
