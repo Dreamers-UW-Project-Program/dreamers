@@ -45,10 +45,10 @@ const DreamResponse = (props: DreamResponseProps) => {
     }, [props.comments])
     
     return (
-        <div className="basis-4/10 flex flex-col border-[0.3vw] rounded-lg w-[50vw] p-[0.1vw]">
+        <div className="basis-4/10 flex flex-col border-[0.3vw] rounded-lg w-[50vw] p-[0.1vw] font-quicksandLight">
             <div className="h-[5vw]">
                 <p className="border-b-[0.1vw] border-orange-500">💖</p>
-                <div className="text-white">
+                <div className="text-white font-quicksandRegular">
                     {Object.keys(users.likeUsers).map(userID => {
                         return <p>{users.likeUsers[userID]["username"]}</p>
                     })}
@@ -60,7 +60,7 @@ const DreamResponse = (props: DreamResponseProps) => {
                     {Object.keys(users.commentUsers).map(commentID => {
                         const user: User = users.commentUsers[commentID];
                         const comment: Comment = props.comments[commentID];
-                        return <p>{user["username"]}: {comment["comment"]}</p>
+                        return <p><span className="font-quicksandRegular">{user["username"]}</span>: {comment["comment"]}</p>
                     })}
                 </div>
             </div>

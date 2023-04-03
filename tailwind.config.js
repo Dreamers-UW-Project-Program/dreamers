@@ -22,6 +22,7 @@ module.exports = {
         quicksandBold: ["Quicksand Bold", "sans-serif"],
         rubikMoonrocks: ["RubikMoonrocks Regular", "sans-serif"],
         poiretOne: ["PoiretOne Regular", "sans-serif"],
+        italiana: ["Italiana", "sans-serif"]
       },
     },
     animation: {
@@ -57,6 +58,5 @@ module.exports = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
-    require('@tailwindcss/line-clamp'),
   ],
 };

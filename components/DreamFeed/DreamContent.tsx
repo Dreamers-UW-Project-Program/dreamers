@@ -76,14 +76,14 @@ const DreamContent = (props: DreamContentProps) => {
   }
 
   return (
-    <div className="basis-6/10 flex flex-col gap-y-2 text-white border-[0.5vw] px-[4vw] py-[0.5vw] rounded-r-3xl font-serif">
-      <div className="flex justify-between">
-        <div className="text-lg ">{props.title}</div>
-        <div>{props.date}</div>
+    <div className="basis-6/10 flex flex-col gap-y-2 text-white border-[4px] px-[4vw] py-[0.5vw] rounded-r-3xl font-quicksandLight">
+      <div className="flex justify-between pb-5">
+        <div className="mt-4 text-3xl font-poiretOne tracking-wider">{props.title}</div>
+        <div className="mt-5 text-md font-quicksandRegular">{props.date}</div>
       </div>
       <div className="flex flex-row gap-2">
         {props.body}
-        <img src={props.thumbnail} className="w-[15vw]" />
+        <img src={props.thumbnail} className="w-[15vw] rounded-md border-white border-2" />
       </div>
       <div className="flex flex-row">
         <button className="text-2xl" onClick={like}>

@@ -3,7 +3,7 @@ import { database as db } from "../../firebase/firebase.js"
 import { ref, push, set } from "firebase/database"
 import { encodeEmail, duplicateEmail } from "@firebase/utils/userUtils.js"
 import { uploadProfileImageFromBase64url } from "@firebase/utils/uploadUtils";
-import { getDownloadUrlFromPath } from '@firebase/utils/downloadUtils';
+import { getDownloadUrlFromPath } from '@firebase/utils/downloadUtils2';
 import multer from "multer";
 import nc from "next-connect";
 

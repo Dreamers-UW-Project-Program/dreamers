@@ -13,6 +13,16 @@ const firebaseConfig = {
   measurementId: "G-S2RFG6VJKZ"
 };
 
+const firebaseConfig2 = {
+  apiKey: "AIzaSyCJiyiJmFySPsedwGQht0jqWaN9BiODE3w",
+  authDomain: "dreamers-v2.firebaseapp.com",
+  projectId: "dreamers-v2",
+  storageBucket: "dreamers-v2.appspot.com",
+  messagingSenderId: "292570117990",
+  appId: "1:292570117990:web:d2de52627888cf50f53aa7",
+  measurementId: "G-C2BZM6F5C7"
+};
+
 // initialize firebase
 const app = initializeApp(firebaseConfig);
 
@@ -21,3 +31,6 @@ export const database = getDatabase(app);
 
 //intialize cloud storage
 export const storage = getStorage(app)
+
+const app2 = initializeApp(firebaseConfig2, "secondary");
+export const storage2 = getStorage(app2);
