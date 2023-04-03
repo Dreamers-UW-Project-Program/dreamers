@@ -10,12 +10,16 @@ function Greeting() {
     function Greet() {
         const hour = new Date().getHours();
         let greet = "";
-        if (hour < 12) {
+        if (hour <= 12 && hour > 6) {
             greet = "Good morning";
-        } else if (hour < 18) {
+        } else if (hour == 6) {
+            greet = "Go to sleep"
+        } else if (hour <= 18 && hour > 12) {
             greet = "Good afternoon";
-        } else {
+        } else if (hour > 18 && hour < 22) {
             greet = "Good evening";
+        } else {
+            greet = "Good night";
         }
         return greet;
     }
