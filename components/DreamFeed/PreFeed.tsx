@@ -50,11 +50,11 @@ function PreFeed(props : PreFeedProps) {
 
   return (
     <div className="flex flew-row mt-[4vw] w-[80%] h-[6vw] relative">
-        <div ref={tilt} {...props} className="flex flex-row w-[40%] glassmorphism rounded-3xl items-center relative">
-          <a className="login-icon-shadow w-[3.5vw] h-[3.5vw] mx-[2vw] mr-[4.5vw]" onClick={handleClick}>
-            <Image src={Add} alt="discord" className="filter-baby-orange mx-[0.75vw] icon hover:scale-110" />
+        <div ref={tilt} {...props} className="flex flex-row w-[40%] bg-[#fffdf821] border-[1px] border-[#fffdf830] white-box-shadow rounded-3xl items-center relative">
+          <a className="w-[3vw] h-[3vw] mx-[2vw] mr-[4vw]" onClick={handleClick}>
+            <Image src={Add} alt="discord" className="filter-baby-orange mx-[0.75vw] icon hover:scale-[1.2] hover:cursor-pointer" />
           </a>
-          <p className=" text-white text-xl font-quicksandLight white-text-shadow">
+          <p className=" text-white text-2xl font-quicksandRegular">
             Had a dream?
           </p>
         </div>

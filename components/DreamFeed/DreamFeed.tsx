@@ -39,7 +39,7 @@ const DreamFeed = () => {
     };
 
     return (
-        <div className="flex flex-col white-box-shadow rounded-[2rem] mt-[2vw] w-[80%] px-10 bg-[#fffdf830] border-[1px] border-[#fffdf830] z-30">
+        <div className="flex flex-col white-box-shadow rounded-[2rem] mt-[2vw] w-[80%] px-10 bg-[#fffdf821] border-[1px] border-[#fffdf830] z-30">
             <p className="font-semibold pt-5 pb-2 text-white font-quicksandBold white-text-shadow text-4xl m-7">Your Friends Dreamed of...</p>
             <InfiniteScroll
                 pageStart={0}
@@ -50,7 +50,7 @@ const DreamFeed = () => {
                 <div className="flex flex-col gap-[1vw]">
                     {Object.keys(posts).map(id => {
                         const args = posts[id]["date"].split(' ');
-                        const date = args[0] + ' ' + args[1] + ' ' + args[2] + ', ' + args[3]
+                        const date = args[1] + ' ' + args[2] + ', ' + args[3]
                         return <FeedPost 
                                     key={id}
                                     postID={id}

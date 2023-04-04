@@ -86,31 +86,37 @@ const DreamContent = (props: DreamContentProps) => {
 
 
   return (
-    <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-2 px-[4vw] py-[0.5vw] rounded-3xl font-quicksandLight">
-      <div className="flex justify-between pb-5">
-        <div className="mt-4 text-3xl font-poiretOne tracking-wider">{props.title}</div>
-        <div className="mt-5 text-md font-quicksandRegular">{props.date}</div>
-        { author ?
-          <>
-            <div className="mt-5 text-md font-quicksandRegular">{author.username}</div>
-            <img className="w-[10%] rounded-full border-white border-2 lighter-sunset-box-shadow xl:mr-8" src={author.avatar}/>
-            <button onClick={async () => await addFriend(renderState.user.userID, props.authorID, renderState.user.token)}>Follow</button>
-          </>
-          : ""
-        }
+    <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-2 px-[4vw] pt-[1vw] pb-[0.5vw] rounded-3xl font-quicksandLight min-h-[30vw] relative">
+      <div className="flex justify-between pb-5 relative">
+        <div className="mt-4 mb-4 text-3xl font-poiretOne tracking-wider">{props.title}</div>
+          { author ?
+            <div className="absolute right-[-10px] top-[-20px]">
+              <div className="mt-5 text-md font-poiretOne tracking-wide">
+                  {author.username}
+              </div>
+              <div className='flex flex-col justify-center items-center'>
+                <img className="w-[4vw] rounded-full border-white border-2 lighter-sunset-box-shadow mb-[6px]" src={author.avatar}/>
+                <button className="bg-white text-black font-quicksandRegular text-sm w-[4.5vw] rounded-lg transition-1s icon hover:scale-105 hover:cursor-pointer z-[1000]" onClick={async () => await addFriend(renderState.user.userID, props.authorID, renderState.user.token)}>Follow</button>
+              </div>
+            </div>
+            : ""
+          }
       </div>
       <div className="flex relative gap-10">
         <div className="w-[60%]">{props.body}</div>
-        <div className="w-[40%] my-auto"><img src={props.thumbnail} className="w-[300px] h-[200px] pr-0 rounded-md border-white border-2" /></div>
+        <div className="w-[40%] my-auto relative"><img src={props.thumbnail} className="w-[300px] h-[200px] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow absolute top-[-70px] left-[15px]" /></div>
       </div>
-      <div className="flex flex-row pt-1 pb-4">
-        <button className="" onClick={like}>
+      <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
+        <div>
+          <button className="" onClick={like}>
             <Image src={LikeIcon} alt="discord" className="filter-red w-[1.75vw] h-[1.65vw] mr-[0.75vw] icon hover:scale-125"/>
-        </button>
-        <button className="text-2xl" onClick={comment}>
-          <Image src={CommentIcon} alt="discord" className="filter-white w-[1.75vw] h-[1.65vw] mx-[0.75vw] icon hover:scale-125"/>
-        </button>
+          </button>
+          <button className="text-2xl" onClick={comment}>
+            <Image src={CommentIcon} alt="discord" className="filter-white w-[1.75vw] h-[1.65vw] mx-[0.75vw] icon hover:scale-125"/>
+          </button>
+        </div>
       </div>
+      <div className="text-lg tracking-wide font-poiretOne absolute bottom-[24px] right-11">{props.date}</div>
       <form className={`flex-col items-end gap-2 
         ${newComment ? 'transition-1s translate-y-0' : 'transition-1s translate-y-[-8rem]' } 
         ${isHidingComment ? 'animate__animated animate__fadeIn transition-1s hidden' : 'animate__animated animate__fadeOut transition-1s flex'}`} 
