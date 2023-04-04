@@ -4,6 +4,7 @@ import {
 } from "../../firebase/utils/userUtils";
 import { useEffect, useState, useContext } from "react";
 import { RenderContext } from "@contexts/render";
+import Image from 'next/image'
 
 type user = { [t: string]: string };
 
@@ -48,8 +49,9 @@ const FriendsList = () => {
       <div className="flex flex-col items-start overflow-auto h-full scroll-smooth">
         {Object.keys(friends ?? {}).map((friend) => {
           // console.log(friend);
-          return <div className="text-md">
-              {friends[friend]["username"]}
+          return <div className="text-md bg-black my-2 text-white rounded-lg">
+                  {friends[friend]["username"]}
+                  <img src={friends[friend]["avatar"]} alt="" className="w-[2vw] h-[2vw]" />
                 </div>;
         })}
       </div>

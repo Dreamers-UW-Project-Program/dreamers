@@ -127,6 +127,7 @@ const DreamContent = (props: DreamContentProps) => {
         <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
           <div className="ml-1">
             <button className="less-red-icon-shadow" onClick={like}>
+              <p className="text-white">{Object.keys(props.likes).length}</p>
               <Image src={LikeIcon} alt="like" className="w-[25px] h-[25px] mr-[0.75vw] icon hover:scale-125"/>
             </button>
             <button className="less-icon-shadow" onClick={comment}>
@@ -136,33 +137,36 @@ const DreamContent = (props: DreamContentProps) => {
         </div>
         <div className="text-lg tracking-wide font-poiretOne absolute bottom-[1.8vw] right-[4.25vw]">{props.date}</div>
       </div>
-      <form className={`flex flex-col items-end gap-2 bg-[#fffdf830] border-[#fffdf867] border-x-2 border-b-2 border-t-[1px] rounded-2xl pr-6 py-4
-        hidden-div ${newComment ? 'show' : '' }`}
+      <div className={`flex flex-col items-end gap-2 bg-[#fffdf830] border-[#fffdf867] border-x-2 border-b-2 border-t-[1px] rounded-2xl pr-6 py-4
+        hidden-div ${newComment ? 'show' : '' }`}>
+        <DreamResponse comments={props.comments} likes={props.likes} />
+        <form className="flex flex-col items-end w-full mt-1"
         onSubmit={postComment}>
           <textarea 
             maxLength={150} 
             onChange={handleTextAreaChange} 
-            className="resize-none text-white bg-[#fffdf822] rounded-xl border-2 border-[#fffdf87e] text-box-shadow w-[95%] h-[5vw] p-[0.5vw] font-quicksandLight">
+            className="resize-none text-white bg-[#fffdf822] rounded-xl border-[1.5px] border-[#fffdf84f] text-box-shadow w-[95%] h-[5vw] p-[0.5vw] font-quicksandLight">
           </textarea>
-          <div className="text-sm text-white">
+          <div className="text-sm font-quicksandLight text-white">
               {numChars}/150 characters
           </div>
           <div className="flex flex-row gap-3">
             <button 
               type='button' 
-              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandBold py-2 px-3 rounded-xl w-[6vw] 
-                hover:scale-105 transition-1s hover:sunset-box-shadow" 
+              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandMedium mt-2 py-2 px-3 rounded-xl w-[6vw] 
+              center-items justify-center hover:scale-110 transition-1s hover:sunset-box-shadow" 
               onClick={handleCancelComment}>
                 Cancel
             </button>
             <button 
-              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandBold py-2 px-3 rounded-xl w-[7vw] 
-                hover:scale-105 transition-1s hover:sunset-box-shadow" 
+              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandMedium mt-2 py-2 px-3 rounded-xl w-[7vw] 
+                center-items justify-center hover:scale-110 transition-1s hover:sunset-box-shadow" 
               type="submit">
                 Comment
             </button>
           </div>
       </form>
+      </div>
     </div>
   );
 };

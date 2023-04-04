@@ -8,8 +8,8 @@ const FeedPost = (props: Post) => {
     const [comments, setComments] = useState(props.comments);
     return (
         <div className="flex flex-row justify-start p-[1vw] gap-[0.8vw]">
-            <DreamContent setLikes={setLikes} setComments={setComments} {...props}  />
-            <DreamResponse comments={comments} likes={likes} />
+            <DreamContent setLikes={setLikes} setComments={setComments} {...props} comments={comments} likes={likes} />
+            
         </div>
     )
 }

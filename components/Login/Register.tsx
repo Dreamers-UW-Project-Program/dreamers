@@ -40,11 +40,21 @@ function Register() {
 
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        // check if the username has a space
+        if (formData.username.includes(" ")) {
+            setErrorMessage("Username cannot contain spaces.");
+            return;
+        }
 
+        // check if the username is longer than 20 characters
+        if (formData.username.length > 20) {
+            setErrorMessage("Username cannot be longer than 20 characters.");
+            return;
+        }
         // validate input fields
 
         if (formData.password !== formData.confirmPassword) {
-        setErrorMessage('Passwords do not match');
+        setErrorMessage('Passwords do not match.');
         return;
         }
         
@@ -125,7 +135,7 @@ function Register() {
                     type="submit" 
                     className="text-rose-50 mt-1 py-2 px-7 bg-gradient-to-r text-lg from-fuchsia-400 to-violet-500 rounded-lg register-icon-shadow
                      font-quicksandLight hover:scale-105">Register</button>
-                {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+                {errorMessage && <div className="font-quicksandRegular pt-2 text-rose-200">{errorMessage}</div>}
             </form>
         </div>
     );
