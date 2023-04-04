@@ -62,7 +62,7 @@ function AvatarWidget() {
         <img
           src={avatar}
           alt="Your Profile Picture"
-          className="w-[35%] rounded-full border-white border-2 white-box-shadow xl:mr-8"
+          className="w-[35%] rounded-full border-[#ffffffde] border-2 white-box-shadow xl:mr-8"
         />
         <div>
           <p className="hidden text-white font-robotoRegular text-sm xl:text-lg">{Greeting()}!</p>

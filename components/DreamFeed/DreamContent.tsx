@@ -92,12 +92,12 @@ const DreamContent = (props: DreamContentProps) => {
 
   return (
     <div>
-      <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 pl-[3.5vw] pr-[4vw] pt-[1vw] pb-[0.5vw]
+      <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 pl-[4vw] pr-[4vw] pt-[1vw] pb-[0.5vw]
         rounded-3xl font-quicksandLight min-h-[30vw] relative">
         <div className="flex justify-between pb-5 relative">
-          <div className="mt-4 mb-4 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
+          <div className="mt-4 mb-3 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
             { author ?
-              <div className="absolute right-[-10px] top-[-20px]">
+              <div className="absolute right-0 top-[-10px]">
                 <div className="mt-5 text-md font-poiretOne tracking-wide">
                     {author.username}
                 </div>
@@ -114,26 +114,26 @@ const DreamContent = (props: DreamContentProps) => {
               : ""
             }
         </div>
-        <div className="flex relative gap-10">
-          <div className="w-[55%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white">
+        <div className="flex relative">
+          <div className="w-[57%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white">
             {props.body}
           </div>
-          <div className="w-[45%] my-auto relative">
-            <img src={props.thumbnail} className="w-[250px] h-[200px] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow 
-              absolute top-[-70px] left-[15px]" />
+          <div className="w-[43%] my-auto relative">
+            <img src={props.thumbnail} className="w-[16vw] h-[16vw] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow 
+              absolute top-[-115px] left-[4.3vw]" />
           </div>
         </div>
         <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
-          <div>
-            <button className="" onClick={like}>
-              <Image src={LikeIcon} alt="like" className="filter-red w-[1.75vw] h-[1.65vw] mr-[0.75vw] icon hover:scale-125"/>
+          <div className="ml-1">
+            <button className="less-red-icon-shadow" onClick={like}>
+              <Image src={LikeIcon} alt="like" className="w-[25px] h-[25px] mr-[0.75vw] icon hover:scale-125"/>
             </button>
-            <button className="text-2xl" onClick={comment}>
-              <Image src={CommentIcon} alt="comment" className="filter-white w-[1.75vw] h-[1.65vw] mx-[0.75vw] icon hover:scale-125"/>
+            <button className="less-icon-shadow" onClick={comment}>
+              <Image src={CommentIcon} alt="comment" className="w-[25px] h-[25px] mx-[0.75vw] icon hover:scale-125"/>
             </button>
           </div>
         </div>
-        <div className="text-lg tracking-wide font-poiretOne absolute bottom-[24px] right-11">{props.date}</div>
+        <div className="text-lg tracking-wide font-poiretOne absolute bottom-[1.8vw] right-[4.25vw]">{props.date}</div>
       </div>
       <form className={`flex flex-col items-end gap-2 bg-[#fffdf830] border-[#fffdf867] border-x-2 border-b-2 border-t-[1px] rounded-2xl pr-6 py-4
         hidden-div ${newComment ? 'show' : '' }`}

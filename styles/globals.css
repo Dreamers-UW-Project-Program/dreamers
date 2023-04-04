@@ -93,6 +93,24 @@
   cursor: pointer;
   animation: ease-in-out;
 }
+.less-icon-shadow{
+  transition: 1s;
+}
+.less-icon-shadow:hover{
+  transition: 1s;
+  filter: drop-shadow(0 0 5px #ffe7cccb);
+  cursor: pointer;
+  animation: ease-in-out;
+}
+.less-red-icon-shadow{
+  transition: 1s;
+}
+.less-red-icon-shadow:hover{
+  transition: 1s;
+  filter: drop-shadow(0 0 5px #f8a9a9cb);
+  cursor: pointer;
+  animation: ease-in-out;
+}
 .login-icon-shadow{
   transition: 1s;
 }

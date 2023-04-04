@@ -45,10 +45,12 @@ const FriendsList = () => {
 
   return (
     <div className="mx-4 mb-6 h-full overflow-hidden font-robotoLight">
-      <div className="flex flex-col items-start text-sm overflow-auto h-full scroll-smooth">
+      <div className="flex flex-col items-start overflow-auto h-full scroll-smooth">
         {Object.keys(friends ?? {}).map((friend) => {
           // console.log(friend);
-          return <div>{friends[friend]["username"]}</div>;
+          return <div className="text-xl">
+              {friends[friend]["username"]}
+                </div>;
         })}
       </div>
     </div>
