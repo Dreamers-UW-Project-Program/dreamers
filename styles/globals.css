@@ -48,6 +48,7 @@
 }
 .filter-red{
   filter: invert(22%) sepia(71%) saturate(3036%) hue-rotate(347deg) brightness(91%) contrast(94%);
+  opacity: 0.75;
 }
 
 
@@ -146,8 +147,18 @@
 .file-input {
   display: none;
 }
-
 /*************************************************** TRANSITIONS **************************************************/
+.hidden-div {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 1s ease-in-out, max-height 0.3s ease-in-out;
+}
+.hidden-div.show {
+  opacity: 1;
+  max-height: 1000px;
+  transition: opacity 1s ease-in-out, max-height 0.3s linear 0s;
+}
 .transition-1s{
   transition: 1s;
 }

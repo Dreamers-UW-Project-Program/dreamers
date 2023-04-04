@@ -8,6 +8,8 @@ import CommentIcon from '../../public/svg/comment-solid.svg'
 import LikeIcon from '../../public/svg/heart-solid.svg'
 import { getUserByID } from "@firebase/utils/userUtils";
 import { addFriend } from "@services/friendServices";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 interface DreamContentProps extends Post {
   setLikes: any;
@@ -21,8 +23,11 @@ const DreamContent = (props: DreamContentProps) => {
   const [likes, setLikes] = useState(props.likes);
   const [comments, setComments] = useState(props.comments);
   const [author, setAuthor] = useState<User>();
-
   const renderState = useContext(RenderContext);
+
+  useEffect(() => {
+    Aos.init({duration: 1000});
+  }, []);
   
   useEffect(() => {
     async function getUser() {
@@ -86,48 +91,75 @@ const DreamContent = (props: DreamContentProps) => {
 
 
   return (
-    <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 px-[4vw] pt-[1vw] pb-[0.5vw] rounded-3xl font-quicksandLight min-h-[30vw] relative">
-      <div className="flex justify-between pb-5 relative">
-        <div className="mt-4 mb-4 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
-          { author ?
-            <div className="absolute right-[-10px] top-[-20px]">
-              <div className="mt-5 text-md font-poiretOne tracking-wide">
-                  {author.username}
+    <div>
+      <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 pl-[3.5vw] pr-[4vw] pt-[1vw] pb-[0.5vw]
+        rounded-3xl font-quicksandLight min-h-[30vw] relative">
+        <div className="flex justify-between pb-5 relative">
+          <div className="mt-4 mb-4 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
+            { author ?
+              <div className="absolute right-[-10px] top-[-20px]">
+                <div className="mt-5 text-md font-poiretOne tracking-wide">
+                    {author.username}
+                </div>
+                <div className='flex flex-col justify-center items-center'>
+                  <img className="w-[4vw] rounded-full border-white border-2 lighter-sunset-box-shadow mb-[6px]" src={author.avatar}/>
+                  <button 
+                    className="bg-white text-black font-quicksandRegular text-sm w-[4.5vw] rounded-lg transition-1s icon-shadow 
+                    hover:scale-105 hover:cursor-pointer z-[1000]" 
+                    onClick={async () => await addFriend(renderState.user.userID, props.authorID, renderState.user.token)}>
+                      Follow
+                  </button>
+                </div>
               </div>
-              <div className='flex flex-col justify-center items-center'>
-                <img className="w-[4vw] rounded-full border-white border-2 lighter-sunset-box-shadow mb-[6px]" src={author.avatar}/>
-                <button className="bg-white text-black font-quicksandRegular text-sm w-[4.5vw] rounded-lg transition-1s icon hover:scale-105 hover:cursor-pointer z-[1000]" onClick={async () => await addFriend(renderState.user.userID, props.authorID, renderState.user.token)}>Follow</button>
-              </div>
-            </div>
-            : ""
-          }
-      </div>
-      <div className="flex relative gap-10">
-        <div className="w-[55%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white">{props.body}</div>
-        <div className="w-[45%] my-auto relative"><img src={props.thumbnail} className="w-[300px] h-[200px] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow absolute top-[-70px] left-[15px]" /></div>
-      </div>
-      <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
-        <div>
-          <button className="" onClick={like}>
-            <Image src={LikeIcon} alt="discord" className="filter-red w-[1.75vw] h-[1.65vw] mr-[0.75vw] icon hover:scale-125"/>
-          </button>
-          <button className="text-2xl" onClick={comment}>
-            <Image src={CommentIcon} alt="discord" className="filter-white w-[1.75vw] h-[1.65vw] mx-[0.75vw] icon hover:scale-125"/>
-          </button>
+              : ""
+            }
         </div>
+        <div className="flex relative gap-10">
+          <div className="w-[55%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white">
+            {props.body}
+          </div>
+          <div className="w-[45%] my-auto relative">
+            <img src={props.thumbnail} className="w-[250px] h-[200px] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow 
+              absolute top-[-70px] left-[15px]" />
+          </div>
+        </div>
+        <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
+          <div>
+            <button className="" onClick={like}>
+              <Image src={LikeIcon} alt="like" className="filter-red w-[1.75vw] h-[1.65vw] mr-[0.75vw] icon hover:scale-125"/>
+            </button>
+            <button className="text-2xl" onClick={comment}>
+              <Image src={CommentIcon} alt="comment" className="filter-white w-[1.75vw] h-[1.65vw] mx-[0.75vw] icon hover:scale-125"/>
+            </button>
+          </div>
+        </div>
+        <div className="text-lg tracking-wide font-poiretOne absolute bottom-[24px] right-11">{props.date}</div>
       </div>
-      <div className="text-lg tracking-wide font-poiretOne absolute bottom-[24px] right-11">{props.date}</div>
-      <form className={`flex-col items-end gap-2 
-        ${newComment ? 'transition-1s translate-y-0' : 'transition-1s translate-y-[-8rem]' } 
-        ${isHidingComment ? 'animate__animated animate__fadeIn transition-1s hidden' : 'animate__animated animate__fadeOut transition-1s flex'}`} 
+      <form className={`flex flex-col items-end gap-2 bg-[#fffdf830] border-[#fffdf867] border-x-2 border-b-2 border-t-[1px] rounded-2xl pr-6 py-4
+        hidden-div ${newComment ? 'show' : '' }`}
         onSubmit={postComment}>
-          <textarea maxLength={150} onChange={handleTextAreaChange} className="resize-none text-white bg-transparent border-2 rounded-xl border-white w-[95%] h-[5vw] p-[0.5vw]"></textarea>
-          <div className="text-sm text-slate-300">
-              {numChars}/150 characters use
+          <textarea 
+            maxLength={150} 
+            onChange={handleTextAreaChange} 
+            className="resize-none text-white bg-[#fffdf822] rounded-xl border-2 border-[#fffdf87e] text-box-shadow w-[95%] h-[5vw] p-[0.5vw] font-quicksandLight">
+          </textarea>
+          <div className="text-sm text-white">
+              {numChars}/150 characters
           </div>
           <div className="flex flex-row gap-3">
-            <button type='button' className="border-2 border-white rounded-xl w-[6vw] px-[1vw] py-[0.2vw] bg-orange-500 hover:bg-orange-700" onClick={handleCancelComment}>Cancel</button>
-            <button className="border-2 border-white rounded-xl w-[6vw] px-[0.9vw] py-[0.2vw] bg-pink-500 hover:bg-pink-700" type="submit">Comment</button>
+            <button 
+              type='button' 
+              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandBold py-2 px-3 rounded-xl w-[6vw] 
+                hover:scale-105 transition-1s hover:sunset-box-shadow" 
+              onClick={handleCancelComment}>
+                Cancel
+            </button>
+            <button 
+              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandBold py-2 px-3 rounded-xl w-[7vw] 
+                hover:scale-105 transition-1s hover:sunset-box-shadow" 
+              type="submit">
+                Comment
+            </button>
           </div>
       </form>
     </div>
