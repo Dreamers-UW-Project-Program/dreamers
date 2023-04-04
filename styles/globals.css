@@ -152,12 +152,12 @@
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 1s ease-in-out, max-height 0.3s ease-in-out;
+  transition: opacity 0.2s ease-in-out, max-height 0.2s ease-in-out;
 }
 .hidden-div.show {
   opacity: 1;
   max-height: 1000px;
-  transition: opacity 1s ease-in-out, max-height 0.3s linear 0s;
+  transition: opacity 0.23s ease-in-out, max-height 0.24s;
 }
 .transition-1s{
   transition: 1s;
