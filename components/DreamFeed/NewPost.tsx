@@ -62,7 +62,7 @@ const NewPost = ({ setNewPost, setLoading }: any) => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full backdrop-brightness-100 glassmorphism flex items-center justify-center z-50">
-      <div className="bg-[#ffffffb7] rounded-lg w-1/2 pt-8 px-[3vw] pb-[2vw] large-sunset-box-shadow">
+      <div className="bg-[#fffdf8e4] rounded-lg w-1/2 pt-8 px-[3vw] pb-[2vw] sunset-box-shadow">
         <form
           className="flex flex-col justify-center mx-auto"
           onSubmit={handleSubmit}
@@ -84,12 +84,12 @@ const NewPost = ({ setNewPost, setLoading }: any) => {
             className="font-quicksandRegular px-3 py-2 rounded-lg my-1 bg-gray-200 text-left items-end h-[10vw] resize-none overflow-scroll-x"
             id="body"
             name="body"
-            maxLength={4000}
+            maxLength={800}
             onChange={handleTextAreaChange}
           />
           <div className="flex flex-col gap-3 items-end w-full">
             <div className="font-quicksandRegular text-sm text-zinc-800 mb-4">
-              {numChars}/4000 characters
+              {numChars}/800 characters
             </div>
             {errorMessage && (
               <div className="font-quicksandRegular pt-2 text-rose-200">
@@ -98,12 +98,12 @@ const NewPost = ({ setNewPost, setLoading }: any) => {
             )}
             <button
               type="submit"
-              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-bold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
+              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandBold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
             >
               Post!
             </button>
             <button
-              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-bold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
+              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandBold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
               onClick={handleClose}
             >
               Cancel
