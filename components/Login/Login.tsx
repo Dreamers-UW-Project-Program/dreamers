@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { RenderContext } from '../../contexts/render.js'
 import { verifyPass } from '../../services/loginServices.js';
+import Cloud from '../../public/svg/cloudflare.svg'
+import Image from 'next/image'
 
 function Login() {
     const renderState = useContext(RenderContext);
@@ -42,7 +44,8 @@ function Login() {
     }
 
     return (
-        <div className="flex h-[38vw] w-[33vw] rounded-lg bg-white glassmorphism m-auto">
+        <div className="flex h-[38vw] w-[33vw] rounded-lg bg-white glassmorphism m-auto relative">
+            <Image className="hidden absolute w-[100px] h-[100px] top-[-70px] right-[13.5vw]" alt="" src={Cloud} />
             <form className="flex flex-col pt-[3.5vw] items-center mx-auto" onSubmit={handleSubmit}>
                 <label className="text-rose-50 font-poiretOne text-[3.5vw] tracking-wide mb-[3vw]" htmlFor="username">Dreamscape</label>
                 <label className="text-rose-50 font-quicksandLight text-md tracking-wide" htmlFor="username">Email :</label>

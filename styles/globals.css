@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
 
 .fixed-center {
@@ -26,12 +27,12 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #fdba74;
+  background: #c34879;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #fdba74; 
+  background: #ff579a; 
 }
 
 /**************************************************** SVG ******************************************************/
@@ -43,7 +44,11 @@
   filter: invert(89%) sepia(0%) saturate(12%) hue-rotate(201deg) brightness(88%) contrast(84%);
 }
 .filter-baby-orange{
-  filter: invert(88%) sepia(7%) saturate(1980%) hue-rotate(326deg) brightness(104%) contrast(91%);
+  filter: invert(90%) sepia(30%) saturate(1000%) hue-rotate(319deg) brightness(85%) contrast(115%);
+}
+.filter-red{
+  filter: invert(22%) sepia(71%) saturate(3036%) hue-rotate(347deg) brightness(91%) contrast(94%);
+  opacity: 0.75;
 }
 
 
@@ -59,18 +64,19 @@
   border-top: 1px solid #ffffff0e;
 }
 .input-glassmorphism{
-  background-color: rgba( 255, 255, 255, 0.40 );
+  background-color: #ffffff66;
   box-shadow: 0 0 3px 0 #ffffff63;
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 5px );
 }
 .widget-glassmorphism{
-  background: #f7e9d212;
-  box-shadow: 3px 3px 10px 0 #ffffff;
+  background: #fffdf821;
+  box-shadow: 0 0 35px 2px #ffffff63;
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 5px );
   border-radius: 10px;
-  border: 1px rgba(255, 255, 255, 0.251);
+  border-left: 1px solid #ffffff0e;
+  border-top: 1px solid #ffffff0e;
 }
 .icon{
   transition: 1s;
@@ -87,12 +93,30 @@
   cursor: pointer;
   animation: ease-in-out;
 }
+.less-icon-shadow{
+  transition: 1s;
+}
+.less-icon-shadow:hover{
+  transition: 1s;
+  filter: drop-shadow(0 0 5px #ffe7cccb);
+  cursor: pointer;
+  animation: ease-in-out;
+}
+.less-red-icon-shadow{
+  transition: 1s;
+}
+.less-red-icon-shadow:hover{
+  transition: 1s;
+  filter: drop-shadow(0 0 5px #f8a9a9cb);
+  cursor: pointer;
+  animation: ease-in-out;
+}
 .login-icon-shadow{
   transition: 1s;
 }
 .login-icon-shadow:hover{
   transition: 1s;
-  filter: drop-shadow(0 0 10px #fac58c);
+  filter: drop-shadow(0 0 10px#fac58c);
   cursor: pointer;
   animation: ease-in-out;
 }
@@ -105,8 +129,20 @@
   cursor: pointer;
   animation: ease-in-out;
 }
+.text-box-shadow{
+  box-shadow: 0 0 8px #ffffff29;
+}
 .white-box-shadow{
   box-shadow: 0 0 14px #fff;
+}
+.less-white-box-shadow{
+  box-shadow: 0 0 8px #fff;
+}
+.glass-box-shadow{
+  box-shadow: 0 0 20px 3px #ffffff46;
+}
+.large-sunset-box-shadow{
+  box-shadow: 0 0 40px 3px #fdb9c0d3;
 }
 .sunset-box-shadow{
   box-shadow: 0 0 20px 3px #ffdbdfa4;
@@ -132,8 +168,23 @@
 .file-input {
   display: none;
 }
-.transition{
+/*************************************************** TRANSITIONS **************************************************/
+.hidden-div {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease-in-out, max-height 0.2s ease-in-out;
+}
+.hidden-div.show {
+  opacity: 1;
+  max-height: 1000px;
+  transition: opacity 0.23s ease-in-out, max-height 0.24s;
+}
+.transition-1s{
   transition: 1s;
+}
+.comment-form-transition {
+  transition: transform 0.5s ease-in-out;
 }
 /*************************************************** FONTS **************************************************/
 
@@ -176,6 +227,10 @@
 @font-face{
   font-family: "Quicksand Regular";
   src: url('../public/fonts/Quicksand-Regular.ttf');
+}
+@font-face{
+  font-family: "Quicksand Medium";
+  src: url('../public/fonts/Quicksand-Medium.ttf');
 }
 @font-face{
   font-family: "Quicksand Bold";

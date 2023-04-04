@@ -25,6 +25,9 @@
 /pages/api/register_with_url.ts
 /pages/api/temporary_post.ts
 /jsons/init.json
+/jsons/v2.json
+/jsons/v3.json
+/jsons/reorder_posts.py
 
 # debug
 npm-debug.log*
