@@ -133,16 +133,14 @@ const DreamContent = (props: DreamContentProps) => {
               absolute top-[-115px] left-[4.3vw]" />
           </div>
         </div>
-        <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
-          <div className="ml-1">
+        <div className="flex flex-row pt-1 pb-4 bottom-0 ml-1">
             <button className="less-red-icon-shadow" onClick={like}>
-              <p className="text-white">{Object.keys(props.likes).length}</p>
-              <Image src={LikeIcon} alt="like" className="w-[25px] h-[25px] mr-[0.75vw] icon hover:scale-125"/>
+              <Image src={LikeIcon} alt="like" className="w-[25px] h-[25px] mr-[0.4vw] icon hover:scale-125"/>
             </button>
+            <p className="text-white font-quicksandLight text-lg mr-[1vw] least-white-text-shadow">{Object.keys(props.likes).length}</p>
             <button className="less-icon-shadow" onClick={comment}>
               <Image src={CommentIcon} alt="comment" className="w-[25px] h-[25px] mx-[0.75vw] icon hover:scale-125"/>
             </button>
-          </div>
         </div>
         <div className="text-lg tracking-wide font-poiretOne absolute bottom-[1.8vw] right-[4.25vw]">{props.date}</div>
       </div>
@@ -159,16 +157,16 @@ const DreamContent = (props: DreamContentProps) => {
           <div className="text-sm font-quicksandLight text-white">
               {numChars}/150 characters
           </div>
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row gap-3 mt-2">
             <button 
               type='button' 
-              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandMedium mt-2 py-2 px-3 rounded-xl w-[6vw] 
+              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandMedium py-2 px-3 rounded-xl w-[6vw] 
               center-items justify-center hover:scale-110 transition-1s hover:sunset-box-shadow" 
               onClick={handleCancelComment}>
                 Cancel
             </button>
             <button 
-              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandMedium mt-2 py-2 px-3 rounded-xl w-[7vw] 
+              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandMedium py-2 px-3 rounded-xl w-[7vw] 
                 center-items justify-center hover:scale-110 transition-1s hover:sunset-box-shadow" 
               type="submit">
                 Comment
