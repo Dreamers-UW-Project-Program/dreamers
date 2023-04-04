@@ -110,6 +110,9 @@
   cursor: pointer;
   animation: ease-in-out;
 }
+.text-box-shadow{
+  box-shadow: 0 0 8px #ffffff29;
+}
 .white-box-shadow{
   box-shadow: 0 0 14px #fff;
 }

@@ -86,9 +86,9 @@ const DreamContent = (props: DreamContentProps) => {
 
 
   return (
-    <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-2 px-[4vw] pt-[1vw] pb-[0.5vw] rounded-3xl font-quicksandLight min-h-[30vw] relative">
+    <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 px-[4vw] pt-[1vw] pb-[0.5vw] rounded-3xl font-quicksandLight min-h-[30vw] relative">
       <div className="flex justify-between pb-5 relative">
-        <div className="mt-4 mb-4 text-3xl font-poiretOne tracking-wider">{props.title}</div>
+        <div className="mt-4 mb-4 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
           { author ?
             <div className="absolute right-[-10px] top-[-20px]">
               <div className="mt-5 text-md font-poiretOne tracking-wide">
@@ -103,8 +103,8 @@ const DreamContent = (props: DreamContentProps) => {
           }
       </div>
       <div className="flex relative gap-10">
-        <div className="w-[60%]">{props.body}</div>
-        <div className="w-[40%] my-auto relative"><img src={props.thumbnail} className="w-[300px] h-[200px] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow absolute top-[-70px] left-[15px]" /></div>
+        <div className="w-[55%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white">{props.body}</div>
+        <div className="w-[45%] my-auto relative"><img src={props.thumbnail} className="w-[300px] h-[200px] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow absolute top-[-70px] left-[15px]" /></div>
       </div>
       <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
         <div>
