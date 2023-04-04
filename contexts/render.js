@@ -8,6 +8,7 @@ export function RenderContextProvider({ children }) {
     const [register, setRegister] = useState(false);
     const [mainDisplay, setMainDisplay] = useState(false);
     const [user, setUser] = useState(null);
+    const [friendsList, setFriendsList] = useState({});
 
     useEffect(() => {
         const storedUser = localStorage.getItem('userObj');
@@ -30,9 +31,9 @@ export function RenderContextProvider({ children }) {
         }
     }, [user]);
 
-    return <RenderContext.Provider 
-                value={{logIn, setLogIn, register, setRegister, mainDisplay, setMainDisplay, user, setUser }}
-            >
-            {children}
-            </RenderContext.Provider>
+    return <RenderContext.Provider
+        value={{ logIn, setLogIn, register, setRegister, mainDisplay, setMainDisplay, user, setUser, friendsList, setFriendsList }}
+    >
+        {children}
+    </RenderContext.Provider>
 }
