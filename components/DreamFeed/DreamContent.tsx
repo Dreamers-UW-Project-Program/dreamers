@@ -6,7 +6,8 @@ import DreamResponse from "./DreamResponse";
 import Image from 'next/image';
 import CommentIcon from '../../public/svg/comment-solid.svg'
 import LikeIcon from '../../public/svg/heart-solid.svg'
-
+import { getUserByID } from "@firebase/utils/userUtils";
+import { addFriend } from "@services/friendServices";
 
 interface DreamContentProps extends Post {
   setLikes: any;
@@ -19,8 +20,19 @@ const DreamContent = (props: DreamContentProps) => {
   const [isHidingComment, setIsHidingComment] = useState<boolean>(true);
   const [likes, setLikes] = useState(props.likes);
   const [comments, setComments] = useState(props.comments);
-  const renderState = useContext(RenderContext);
+  const [author, setAuthor] = useState<User>();
 
+  const renderState = useContext(RenderContext);
+  
+  useEffect(() => {
+    async function getUser() {
+      const user = await getUserByID(props.authorID);
+      setAuthor(user);
+    }
+
+    getUser();
+  }, [])
+  
   async function like() {
     const res = await likePost(
       props.postID,
@@ -78,6 +90,14 @@ const DreamContent = (props: DreamContentProps) => {
       <div className="flex justify-between pb-5">
         <div className="mt-4 text-3xl font-poiretOne tracking-wider">{props.title}</div>
         <div className="mt-5 text-md font-quicksandRegular">{props.date}</div>
+        { author ?
+          <>
+            <div className="mt-5 text-md font-quicksandRegular">{author.username}</div>
+            <img className="w-[10%] rounded-full border-white border-2 lighter-sunset-box-shadow xl:mr-8" src={author.avatar}/>
+            <button onClick={async () => await addFriend(renderState.user.userID, props.authorID, renderState.user.token)}>Follow</button>
+          </>
+          : ""
+        }
       </div>
       <div className="flex relative gap-10">
         <div className="w-[60%]">{props.body}</div>
