@@ -11,7 +11,6 @@ type user = { [t: string]: string };
 const FriendsList = () => {
   const renderState = useContext(RenderContext);
 
-  const [friendsList, setFriendsList] = useState({});
   const [friends, setFriends] = useState<{ [s: string]: user }>({});
 
   useEffect(() => {
@@ -21,7 +20,7 @@ const FriendsList = () => {
           renderState.user.userID ?? process.env.DEFAULT_USER_ID ?? ""
         );
         // console.log(friendsList);
-        setFriendsList(res);
+        renderState.setFriendsList(res);
       } catch (e) {
         console.log(e);
       }
@@ -31,7 +30,7 @@ const FriendsList = () => {
 
   useEffect(() => {
     try {
-      Object.keys(friendsList).forEach(async (friend) => {
+      Object.keys(renderState.friendsList).forEach(async (friend) => {
         const currFriend = await getUserByID(friend);
         setFriends((friends) => ({
           ...friends,
@@ -42,7 +41,7 @@ const FriendsList = () => {
     } catch (e) {
       console.log(e);
     }
-  }, [friendsList]);
+  }, [renderState.friendsList]);
 
   return (
     <div className="mx-4 mb-6 h-full overflow-hidden font-robotoLight">

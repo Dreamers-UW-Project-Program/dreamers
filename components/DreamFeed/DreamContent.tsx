@@ -90,6 +90,15 @@ const DreamContent = (props: DreamContentProps) => {
   }
 
 
+  async function friend() {
+    await addFriend(renderState.user.userID, props.authorID, renderState.user.token);
+    const id = props.authorID;
+    renderState.setFriendsList((friendList: any) => ({
+      ...friendList,
+      [id]: true,
+    }));
+  }
+
   return (
     <div>
       <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 pl-[4vw] pr-[4vw] pt-[1vw] pb-[0.5vw]
@@ -106,7 +115,7 @@ const DreamContent = (props: DreamContentProps) => {
                   <button 
                     className="bg-white text-black font-quicksandRegular text-sm w-[4.5vw] rounded-lg transition-1s icon-shadow 
                     hover:scale-105 hover:cursor-pointer z-[1000]" 
-                    onClick={async () => await addFriend(renderState.user.userID, props.authorID, renderState.user.token)}>
+                    onClick={friend}>
                       Follow
                   </button>
                 </div>
