@@ -48,7 +48,7 @@ const FriendsList = () => {
       <div className="flex flex-col items-start overflow-auto h-full scroll-smooth">
         {Object.keys(friends ?? {}).map((friend) => {
           // console.log(friend);
-          return <div className="text-xl">
+          return <div className="text-md">
               {friends[friend]["username"]}
                 </div>;
         })}

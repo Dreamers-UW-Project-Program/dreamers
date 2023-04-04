@@ -64,7 +64,7 @@
   border-top: 1px solid #ffffff0e;
 }
 .input-glassmorphism{
-  background-color: rgba( 255, 255, 255, 0.40 );
+  background-color: #ffffff66;
   box-shadow: 0 0 3px 0 #ffffff63;
   backdrop-filter: blur( 4px );
   -webkit-backdrop-filter: blur( 5px );
@@ -137,6 +137,9 @@
 }
 .less-white-box-shadow{
   box-shadow: 0 0 8px #fff;
+}
+.glass-box-shadow{
+  box-shadow: 0 0 20px 3px #ffffff46;
 }
 .large-sunset-box-shadow{
   box-shadow: 0 0 40px 3px #fdb9c0d3;

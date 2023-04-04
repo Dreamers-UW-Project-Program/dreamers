@@ -95,14 +95,14 @@ const DreamContent = (props: DreamContentProps) => {
       <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 pl-[4vw] pr-[4vw] pt-[1vw] pb-[0.5vw]
         rounded-3xl font-quicksandLight min-h-[30vw] relative">
         <div className="flex justify-between pb-5 relative">
-          <div className="mt-4 mb-3 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
+          <div className="mt-[2.75rem] mb-1 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
             { author ?
-              <div className="absolute right-0 top-[-10px]">
+              <div className="absolute right-[7px] top-[-10px]">
                 <div className="mt-5 text-md font-poiretOne tracking-wide">
                     {author.username}
                 </div>
                 <div className='flex flex-col justify-center items-center'>
-                  <img className="w-[4vw] rounded-full border-white border-2 lighter-sunset-box-shadow mb-[6px]" src={author.avatar}/>
+                  <img className="w-[4vw] h-[4vw] rounded-full border-white border-2 lighter-sunset-box-shadow mb-[6px]" src={author.avatar}/>
                   <button 
                     className="bg-white text-black font-quicksandRegular text-sm w-[4.5vw] rounded-lg transition-1s icon-shadow 
                     hover:scale-105 hover:cursor-pointer z-[1000]" 
@@ -114,12 +114,13 @@ const DreamContent = (props: DreamContentProps) => {
               : ""
             }
         </div>
-        <div className="flex relative">
-          <div className="w-[57%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white">
+        <div className="flex relative min-h-[22vw] items-center">
+          <div className="flex w-[57%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white
+            items-center justify-center">
             {props.body}
           </div>
           <div className="w-[43%] my-auto relative">
-            <img src={props.thumbnail} className="w-[16vw] h-[16vw] pr-0 rounded-2xl border-[#ffffff5a] border-2 less-white-box-shadow 
+            <img src={props.thumbnail} className="w-[16vw] h-[16vw] pr-0 rounded-2xl border-[#ffffff5a] border-2 glass-box-shadow 
               absolute top-[-115px] left-[4.3vw]" />
           </div>
         </div>
