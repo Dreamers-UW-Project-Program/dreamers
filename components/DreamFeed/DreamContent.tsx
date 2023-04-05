@@ -157,6 +157,7 @@ const DreamContent = (props: DreamContentProps) => {
           <textarea 
             maxLength={150} 
             onChange={handleTextAreaChange} 
+            value={userComment}
             className="resize-none text-white bg-[#fffdf822] rounded-xl border-[1.5px] border-[#fffdf84f] text-box-shadow w-[95%] h-[5vw] p-[0.5vw] font-quicksandLight">
           </textarea>
           <div className="text-sm font-quicksandLight text-white">
