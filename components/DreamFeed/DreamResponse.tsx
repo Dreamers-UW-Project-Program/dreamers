@@ -13,7 +13,7 @@ const DreamResponse = (props: DreamResponseProps) => {
         commentUsers: { [commentID: string]: User }
     }>({ likeUsers: {}, commentUsers: {} });
 
-    const [displayComments, setDisplayComments] = useState({});
+    const [displayComments, setDisplayComments] = useState<PostComments>({});
 
     useEffect(() => {
         const getLikeUser = async (id: string) => {

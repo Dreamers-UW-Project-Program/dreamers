@@ -32,7 +32,7 @@ async function usersPostListHandler(authorID: string, postKey: string) {
     await set(newUsersPostRef, true);
 }
 
-const postHandler = nc<NextApiRequest, NextApiResponse>({
+const postHandler = nc<any, any>({
     onError(error, req, res) {
         res.status(501).json({ error: `Sorry something happened! ${error.message}` });
     },
