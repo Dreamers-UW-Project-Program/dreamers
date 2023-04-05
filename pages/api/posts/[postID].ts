@@ -7,7 +7,8 @@ type Data = {
     message?: string,
     userID?: string,
     like?: boolean,
-    comment?: string
+    comment?: string,
+    newCommentID?: string
 }
 
 export default async function postHandler(
@@ -51,13 +52,21 @@ export default async function postHandler(
                 await set(likeRef, true);
             }
 
+            let newCommentID = null;
+
             if (comment) {
                 const commentsRef = ref(db, `/postList/${postID}/comments`);
                 const newCommentRef = await push(commentsRef);
                 await set(newCommentRef, { userID, comment });
+                newCommentID = newCommentRef.key;
             }
 
-            res.status(201).json({ like, comment, userID });
+            if (!newCommentID) {
+                res.status(201).json({ like, comment, userID });
+            } else {
+                res.status(201).json({ like, comment, userID, newCommentID });
+            }
+
         } catch (err) {
             console.log(err);
             res.status(400).send({ message: "Invalid Request" });
