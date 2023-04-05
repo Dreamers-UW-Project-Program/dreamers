@@ -1,5 +1,32 @@
+## What it does :eyeglasses:
 
-## API Reference
+Dreamscape is an innovative dream journal platform that empowers users to record and share their fascinating dreams as captivating posts. Moreover, a unique image is thoughtfully generated to reflect the user's subconscious visions from the previous night. Users can seamlessly connect with other like-minded individuals, share their dreams anonymously, and add friends with similar dream interests to foster a supportive community. This dynamic app offers a secure and private space for users to explore the depths of their minds, gain profound insights, and even awaken hidden talents and passions.
+
+## Inspiration :flashlight:
+
+Our project idea originated from the book _Do Androids Dream Of Electric Sheep (1968)_ by Philip K. Dick, a more than influential sci-fi novel that set the groundwork for the concept of Cyberpunk. Further, the book was adapted into a film, better known as Blade Runners. 
+
+### but who asked?
+
+A large portion of the book discusses the nature of humanity and the discovery of one's identity and individuality; we are motivated to do the same. By keeping a dream journal and sharing your dreams with a supportive community of like-minded dreamers, we gain new perspectives and insights into our subconscious minds. In a fast moving world, it is more important than ever to understand yourself in the overwhelming amount of information.
+
+## How we built it :wrench:
+
+Dreamscape was built using a combination of modern web development technologies, including Typescript, Next.js, Tailwindcss for the front-end user interface, and a backend server for data storage and authentication through Firebase. DALLE-2 was leveraged to generate and visualize dreamscapes. As for the upcoming dreammate feature (see more below), we designed a RelativityModel to use in pytorch for tokenizing and comparing similarities between dream posts to match users. However, since we need more data from users to train our model, this feature is currently not integrated. 
+
+## Challenges we ran into :hammer:
+
+During the development of Dreamscape, we faced challenges in designing an intuitive and user-friendly interface that could capture the complexity of dreams. We also encountered technical hurdles in implementing the backend server and ensuring data security. Additionally, balancing the need for anonymity with the desire for social connections posed challenges in designing the friend and sharing features.
+
+## What we learned :mortar_board:
+
+Through the development of Dreamscape, we learned valuable lessons in UI/UX design, backend server implementation, data security, and some elementary stable diffusion principles. We also gained insights into the diverse and complex nature of dreams and the importance of creating a supportive community for dreamers to share their experiences.
+
+## What's next for Dreamscape :sunglasses:
+
+Coming years would be dedicated to enhancing features such as dreammate matching, a feature that recommends you an unique dreamer periodically based on similarities of your dreams and likes. We will also work on incorporating machine learning algorithms to provide personalized dream insights. Further, we plan on renting a GPU to host our own stable diffusion model for image generation, fine-tuned for dream visualizing. Our vision is to make Dreamscape the go-to platform for dreamers worldwide, fostering self-discovery, connection, and exploration of the fascinating world of dreams. Stay tuned for exciting updates! 
+
+## API Reference :notebook_with_decorative_cover:
 
 #### Register
 
