@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     
       <div className="">
         <Head>
-          <title>Androids, Dreams, Electric Sheep</title>
+          <title>Dreamscape</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className="bg-black min-h-screen flex flex-row max-w-[2500px] mx-auto m-0 overflow-x-hidden scroll-smooth p-0 bg-image">

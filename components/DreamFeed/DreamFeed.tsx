@@ -59,7 +59,7 @@ const DreamFeed = () => {
                                     authorID={posts[id]["authorID"]}
                                     date={date}
                                     thumbnail={posts[id]["thumbnail"]}
-                                    // thumbnail={"https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"}
+                                    //thumbnail={"https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"}
                                     comments={posts[id]["comments"] ?? {}}
                                     likes={posts[id]["likes"] ?? {}}
                                 />

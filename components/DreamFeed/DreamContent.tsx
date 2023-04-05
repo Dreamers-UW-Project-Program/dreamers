@@ -20,13 +20,15 @@ const DreamContent = (props: DreamContentProps) => {
   const [numChars, setNumChars] = useState<number>(0);
   const [userComment, setUserComment] = useState<string>("");
   const [isHidingComment, setIsHidingComment] = useState<boolean>(true);
-  const [likes, setLikes] = useState(props.likes);
-  const [comments, setComments] = useState(props.comments);
   const [author, setAuthor] = useState<User>();
   const renderState = useContext(RenderContext);
 
   useEffect(() => {
-    Aos.init({duration: 1000});
+    Aos.init({
+      duration: 800,
+      easing: 'ease-in-out',
+
+    });
   }, []);
   
   useEffect(() => {
@@ -52,20 +54,23 @@ const DreamContent = (props: DreamContentProps) => {
   }
 
   async function postComment(event: React.FormEvent<HTMLFormElement>) {
-    //event.preventDefault() // uncommenting this line creates error with the props or wtv
-    await commentPost(
+    event.preventDefault()
+    const newCommentID = await commentPost(
       props.postID,
       renderState.user.userID,
       renderState.user.token,
       userComment,
-    )
+    );
 
     props.setComments((comments: any) => ({
-      [renderState.user.userID]: comment, // users can post more than one comment
       ...comments,
+      [newCommentID]: {
+        "comment": userComment,
+        "userID": renderState.user.userID
+      }, // users can post more than one comment
     }));
-    setNewComment(false);
-    setUserComment("")
+    setUserComment("");
+    // setNewComment(false);
     setNumChars(0);
   }
 
@@ -103,7 +108,7 @@ const DreamContent = (props: DreamContentProps) => {
     <div>
       <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 pl-[4vw] pr-[4vw] pt-[1vw] pb-[0.5vw]
         rounded-3xl font-quicksandLight min-h-[30vw] relative">
-        <div className="flex justify-between pb-5 relative">
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="flex justify-between pb-5 relative">
           <div className="mt-[2.75rem] mb-1 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
             { author ?
               <div className="absolute right-[7px] top-[-10px]">
@@ -123,7 +128,7 @@ const DreamContent = (props: DreamContentProps) => {
               : ""
             }
         </div>
-        <div className="flex relative min-h-[22vw] items-center">
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="flex relative min-h-[22vw] items-center">
           <div className="flex w-[57%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white
             items-center justify-center">
             {props.body}
@@ -133,45 +138,47 @@ const DreamContent = (props: DreamContentProps) => {
               absolute top-[-115px] left-[4.3vw]" />
           </div>
         </div>
-        <div className="flex flex-row pt-1 pb-4 justify-between bottom-0">
-          <div className="ml-1">
+        <div className="flex flex-row pt-1 pb-4 bottom-0 ml-1">
             <button className="less-red-icon-shadow" onClick={like}>
-              <Image src={LikeIcon} alt="like" className="w-[25px] h-[25px] mr-[0.75vw] icon hover:scale-125"/>
+              <Image src={LikeIcon} alt="like" className="w-[25px] h-[25px] mr-[0.4vw] icon hover:scale-125"/>
             </button>
+            <p className="text-white font-quicksandLight text-lg mr-[1vw] least-white-text-shadow">{Object.keys(props.likes).length}</p>
             <button className="less-icon-shadow" onClick={comment}>
               <Image src={CommentIcon} alt="comment" className="w-[25px] h-[25px] mx-[0.75vw] icon hover:scale-125"/>
             </button>
-          </div>
         </div>
         <div className="text-lg tracking-wide font-poiretOne absolute bottom-[1.8vw] right-[4.25vw]">{props.date}</div>
       </div>
-      <form className={`flex flex-col items-end gap-2 bg-[#fffdf830] border-[#fffdf867] border-x-2 border-b-2 border-t-[1px] rounded-2xl pr-6 py-4
-        hidden-div ${newComment ? 'show' : '' }`}
+      <div className={`flex flex-col items-end gap-2 bg-[#fffdf830] border-[#fffdf867] border-x-2 border-b-2 border-t-[1px] rounded-2xl pr-6 py-4
+        hidden-div ${newComment ? 'show' : '' }`}>
+        <DreamResponse comments={props.comments} likes={props.likes} />
+        <form className="flex flex-col items-end w-full mt-1"
         onSubmit={postComment}>
           <textarea 
             maxLength={150} 
             onChange={handleTextAreaChange} 
-            className="resize-none text-white bg-[#fffdf822] rounded-xl border-2 border-[#fffdf87e] text-box-shadow w-[95%] h-[5vw] p-[0.5vw] font-quicksandLight">
+            className="resize-none text-white bg-[#fffdf822] rounded-xl border-[1.5px] border-[#fffdf84f] text-box-shadow w-[95%] h-[5vw] p-[0.5vw] font-quicksandLight">
           </textarea>
-          <div className="text-sm text-white">
+          <div className="text-sm font-quicksandLight text-white">
               {numChars}/150 characters
           </div>
-          <div className="flex flex-row gap-3">
+          <div className="flex flex-row gap-3 mt-4">
             <button 
               type='button' 
-              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandBold py-2 px-3 rounded-xl w-[6vw] 
-                hover:scale-105 transition-1s hover:sunset-box-shadow" 
+              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandMedium py-2 px-3 rounded-xl w-[6vw] 
+              center-items justify-center hover:scale-110 transition-1s hover:sunset-box-shadow" 
               onClick={handleCancelComment}>
                 Cancel
             </button>
             <button 
-              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandBold py-2 px-3 rounded-xl w-[7vw] 
-                hover:scale-105 transition-1s hover:sunset-box-shadow" 
+              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandMedium py-2 px-3 rounded-xl w-[7vw] 
+                center-items justify-center hover:scale-110 transition-1s hover:sunset-box-shadow" 
               type="submit">
                 Comment
             </button>
           </div>
       </form>
+      </div>
     </div>
   );
 };

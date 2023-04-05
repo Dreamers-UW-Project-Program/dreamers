@@ -5,6 +5,7 @@ import {
 import { useEffect, useState, useContext } from "react";
 import { RenderContext } from "@contexts/render";
 
+
 type user = { [t: string]: string };
 
 const FriendsList = () => {
@@ -43,12 +44,14 @@ const FriendsList = () => {
   }, [renderState.friendsList]);
 
   return (
-    <div className="mx-4 mb-6 h-full overflow-hidden font-robotoLight">
-      <div className="flex flex-col items-start overflow-auto h-full scroll-smooth">
+    <div className="mx-4 mb-6 h-full font-robotoLight justify-center pl-3" >
+      <div className="flex flex-col items-center h-full" style={{ maxHeight: "100%" }}>
         {Object.keys(friends ?? {}).map((friend) => {
           // console.log(friend);
-          return <div className="text-md">
-              {friends[friend]["username"]}
+          return <div className="flex flex-row text-md my-2 bg-[#fffdf830] border-[#fffdf84f] border-[1.5px] rounded-lg 
+          font-quicksandLight p-2 text-box-shadow items-center justify-center w-[15vw]">
+                  <img className="w-[2vw] h-[2vw] rounded-2xl mr-3" src={friends[friend]["avatar"]} alt="" />
+                    {friends[friend]["username"]}
                 </div>;
         })}
       </div>
