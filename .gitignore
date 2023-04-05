@@ -24,6 +24,7 @@
 /pages/api/image_test.ts
 /pages/api/register_with_url.ts
 /pages/api/temporary_post.ts
+/pages/api/getID.js
 /jsons
 
 # debug

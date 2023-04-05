@@ -49,7 +49,7 @@ export const uploadProfileImageFromDataUrl = async (dataUrl, imageName) => {
 }
 
 export const uploadPostThumbnailFromBase64 = async (base64, imageName) => {
-	const profileImageRef = ref(storage2,  `post-thumbnails/${imageName}`);
+	const profileImageRef = ref(storage,  `post-thumbnails/${imageName}`);
 	await uploadString(profileImageRef, base64, 'base64').then((snapshot) => {
 		console.log('Uploaded a base64 string!');
 	});
