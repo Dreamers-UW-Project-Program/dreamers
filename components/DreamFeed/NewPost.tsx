@@ -98,12 +98,12 @@ const NewPost = ({ setNewPost, setLoading }: any) => {
             )}
             <button
               type="submit"
-              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandBold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
+              className="bg-gradient-to-r from-pink-600 to-orange-400 text-white font-quicksandMedium py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
             >
               Post!
             </button>
             <button
-              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandBold py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
+              className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandMedium py-2 px-4 rounded-xl w-[8vw] hover:scale-105 transition-1s sunset-box-shadow"
               onClick={handleClose}
             >
               Cancel

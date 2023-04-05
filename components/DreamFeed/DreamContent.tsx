@@ -26,7 +26,11 @@ const DreamContent = (props: DreamContentProps) => {
   const renderState = useContext(RenderContext);
 
   useEffect(() => {
-    Aos.init({duration: 1000});
+    Aos.init({
+      duration: 800,
+      easing: 'ease-in-out',
+
+    });
   }, []);
   
   useEffect(() => {
@@ -103,7 +107,7 @@ const DreamContent = (props: DreamContentProps) => {
     <div>
       <div className="flex flex-col gap-y-2 text-white bg-[#fffdf830] border-[#fffdf867] border-2 pl-[4vw] pr-[4vw] pt-[1vw] pb-[0.5vw]
         rounded-3xl font-quicksandLight min-h-[30vw] relative">
-        <div className="flex justify-between pb-5 relative">
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="flex justify-between pb-5 relative">
           <div className="mt-[2.75rem] mb-1 pl-5 text-3xl font-poiretOne tracking-wider less-white-text-shadow">{props.title}</div>
             { author ?
               <div className="absolute right-[7px] top-[-10px]">
@@ -123,7 +127,7 @@ const DreamContent = (props: DreamContentProps) => {
               : ""
             }
         </div>
-        <div className="flex relative min-h-[22vw] items-center">
+        <div data-aos="fade-up" data-aos-anchor-placement="top-bottom" className="flex relative min-h-[22vw] items-center">
           <div className="flex w-[57%] bg-[#fffdf822] p-5 rounded-xl border-[1.5px] border-[#fffdf82f] text-box-shadow text-white
             items-center justify-center">
             {props.body}
@@ -157,7 +161,7 @@ const DreamContent = (props: DreamContentProps) => {
           <div className="text-sm font-quicksandLight text-white">
               {numChars}/150 characters
           </div>
-          <div className="flex flex-row gap-3 mt-2">
+          <div className="flex flex-row gap-3 mt-4">
             <button 
               type='button' 
               className="bg-gradient-to-r from-rose-400 to-orange-300 text-white font-quicksandMedium py-2 px-3 rounded-xl w-[6vw] 
