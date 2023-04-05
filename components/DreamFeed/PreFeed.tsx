@@ -20,7 +20,7 @@ interface PreFeedProps {
   [key: string]: any;
 }
 
-function PreFeed(props : PreFeedProps) {
+function PreFeed(props : {}) {
 
   const [newPost, setNewPost] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);

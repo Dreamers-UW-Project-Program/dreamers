@@ -3,7 +3,7 @@ import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD1lKD7cgw44jVlDG9yNmRKiqenWSN7ABE",
+  apiKey: process.env.FIREBASE_API_1,
   authDomain: "dreamers-7971d.firebaseapp.com",
   databaseURL: "https://dreamers-7971d-default-rtdb.firebaseio.com",
   projectId: "dreamers-7971d",
@@ -14,7 +14,7 @@ const firebaseConfig = {
 };
 
 const firebaseConfig2 = {
-  apiKey: "AIzaSyCJiyiJmFySPsedwGQht0jqWaN9BiODE3w",
+  apiKey: process.env.FIREBASE_API_2,
   authDomain: "dreamers-v2.firebaseapp.com",
   projectId: "dreamers-v2",
   storageBucket: "dreamers-v2.appspot.com",

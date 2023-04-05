@@ -33,7 +33,7 @@ async function userIdListHandler(email: string, id: string) {
     await set(newUserIDRef, { id });
 }
 
-const registerHandler = nc<NextApiRequest, NextApiResponse>({
+const registerHandler = nc<any, any>({
     onError(error, req, res) {
         res.status(501).json({error: `Sorry something happened! ${error.message}`});
     },

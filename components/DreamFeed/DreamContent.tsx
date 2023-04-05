@@ -20,8 +20,6 @@ const DreamContent = (props: DreamContentProps) => {
   const [numChars, setNumChars] = useState<number>(0);
   const [userComment, setUserComment] = useState<string>("");
   const [isHidingComment, setIsHidingComment] = useState<boolean>(true);
-  const [likes, setLikes] = useState(props.likes);
-  const [comments, setComments] = useState(props.comments);
   const [author, setAuthor] = useState<User>();
   const renderState = useContext(RenderContext);
 
@@ -56,20 +54,23 @@ const DreamContent = (props: DreamContentProps) => {
   }
 
   async function postComment(event: React.FormEvent<HTMLFormElement>) {
-    //event.preventDefault() // uncommenting this line creates error with the props or wtv
-    await commentPost(
+    event.preventDefault()
+    const newCommentID = await commentPost(
       props.postID,
       renderState.user.userID,
       renderState.user.token,
       userComment,
-    )
+    );
 
     props.setComments((comments: any) => ({
-      [renderState.user.userID]: comment, // users can post more than one comment
       ...comments,
+      [newCommentID]: {
+        "comment": userComment,
+        "userID": renderState.user.userID
+      }, // users can post more than one comment
     }));
-    setNewComment(false);
-    setUserComment("")
+    setUserComment("");
+    // setNewComment(false);
     setNumChars(0);
   }
 

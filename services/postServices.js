@@ -32,12 +32,12 @@ export async function commentPost(postID, userID, token, comment) {
         });
 
         if (response.status == 201) {
-            return true;
+            return response.data['newCommentID'];
         }
-        return false;
+        return null;
     } catch (err) {
         console.log(err);
-        return false;
+        return null;
     }
 
 }

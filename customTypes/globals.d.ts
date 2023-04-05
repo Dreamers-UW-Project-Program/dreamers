@@ -12,7 +12,7 @@ export interface Post {
 export type PostLikes = {[s: string]: boolean}
 
 export type PostComments = {
-    [s: string]: {comment: string; userID: string};
+    [s: string]: {comment: string; userID: string; username: string; avatar: string};
 }
 
 export interface User {
