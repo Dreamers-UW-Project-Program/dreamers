@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { database as db } from "../../firebase/firebase.js"
-import { ref, push, set, get, query, limitToFirst, orderByKey, startAt, startAfter } from "firebase/database"
+import { ref, push, set, get, query, limitToFirst, orderByKey, startAt, startAfter, endAt, limitToLast } from "firebase/database"
 import { getToken, getUserIDByToken } from "../../firebase/utils/loginTokenUtils.js"
 import { generateBase64 } from "../../services/imageServices.js"
 import { uploadPostThumbnailFromBase64 } from "@firebase/utils/uploadUtils";
@@ -46,8 +46,8 @@ postHandler.use(multer().any());
 postHandler.get(async (req, res) => {
     try {
 
-        const { startKey, num } = req.query;
-        let postListRef = query(ref(db, '/postList'), startAt(String(startKey)), limitToFirst(Number(num)), orderByKey());
+        const { lastKey, num } = req.query;
+        let postListRef = query(ref(db, '/postList'), endAt(String(lastKey)), limitToLast(Number(num)), orderByKey());
         const snapshot = await get(postListRef);
         // console.log(snapshot.val());
 

@@ -4,13 +4,13 @@ import { Post } from "@customTypes/globals";
 import InfiniteScroll from 'react-infinite-scroller';
 
 const DreamFeed = () => {
-    const [posts, setPosts] = useState<{[id: string]: Post}>({});
-    const [lastKey, setLastKey] = useState(" ");
+    const [posts, setPosts] = useState<{ [id: string]: Post }>({});
+    const [lastKey, setLastKey] = useState("~~~~~~~~~~~~~~~~");
     const [hasMore, setHasMore] = useState(true);
 
     const loadMore = async () => {
 
-        const fetchedPosts: {[id: string]: Post} = await fetch(`/api/posts?startKey=${lastKey}&num=5`, {
+        const fetchedPosts: { [id: string]: Post } = await fetch(`/api/posts?lastKey=${lastKey}&num=5`, {
             method: "GET",
         }).then(response => {
             if (response.status === 404) {
@@ -24,18 +24,25 @@ const DreamFeed = () => {
             console.log("Page False");
             return;
         }
-        
-        setPosts(prevPosts => ({ ...prevPosts, ...fetchedPosts }));
+
+        const keys = Object.keys(fetchedPosts);
+
+        let newObj: { [id: string]: Post } = {};
+        for (let i = keys.length - 1; i >= 0; i--) {
+            newObj[keys[i]] = fetchedPosts[keys[i]];
+        }
+
+        setPosts(prevPosts => ({ ...prevPosts, ...newObj }));
         console.log("Loaded Page");
 
-        console.log("keys", Object.keys(fetchedPosts));
+        // console.log("keys", Object.keys(fetchedPosts));
         // console.log("last key:", Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1])
-        const key = Object.keys(fetchedPosts)[Object.keys(fetchedPosts).length - 1];
-        console.log("key:", key);
+        const key = Object.keys(fetchedPosts)[0];
+        // console.log("key:", key);
         // await setLastKey("no longer empty string mf");
         setLastKey(key);
-        console.log("lastKey:", lastKey);
-        console.log(Object.keys(posts).length);
+        // console.log("lastKey:", lastKey);
+        // console.log(Object.keys(posts).length);
     };
 
     return (
@@ -51,18 +58,18 @@ const DreamFeed = () => {
                     {Object.keys(posts).map(id => {
                         const args = posts[id]["date"].split(' ');
                         const date = args[1] + ' ' + args[2] + ', ' + args[3]
-                        return <FeedPost 
-                                    key={id}
-                                    postID={id}
-                                    body={posts[id]["body"]}
-                                    title={posts[id]["title"]}
-                                    authorID={posts[id]["authorID"]}
-                                    date={date}
-                                    thumbnail={posts[id]["thumbnail"]}
-                                    //thumbnail={"https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"}
-                                    comments={posts[id]["comments"] ?? {}}
-                                    likes={posts[id]["likes"] ?? {}}
-                                />
+                        return <FeedPost
+                            key={id}
+                            postID={id}
+                            body={posts[id]["body"]}
+                            title={posts[id]["title"]}
+                            authorID={posts[id]["authorID"]}
+                            date={date}
+                            thumbnail={posts[id]["thumbnail"]}
+                            // thumbnail={"https://cdn.discordapp.com/attachments/772859425261748255/1086762019690139729/photo-1524024973431-2ad916746881.jpg"}
+                            comments={posts[id]["comments"] ?? {}}
+                            likes={posts[id]["likes"] ?? {}}
+                        />
                     })}
                 </div>
             </InfiniteScroll>
